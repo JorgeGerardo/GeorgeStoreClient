@@ -1,0 +1,103 @@
+<body class="container vh-100 d-flex align-items-center justify-content-center">
+  <main class="w-100" style="max-width: 400px">
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+      <h3 class="text-center mb-4">Register</h3>
+
+      <!-- Error -->
+      @if (error) {
+        <ngb-alert type="danger" (close)="error = null">
+          {{ error }}
+        </ngb-alert>
+      }
+
+      @if (form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched) {
+        <ngb-alert type="danger" [dismissible]="false">
+          {{ 'Password must be same' }}
+        </ngb-alert>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="login()">
+        <!-- UserName -->
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="userName"
+            placeholder="George01"
+          />
+
+          @if (form.controls.userName.touched && form.controls.userName.invalid) {
+            <small class="text-danger">
+              @if (form.controls.userName.errors?.["required"]) {
+                Username is required
+              }
+              @if (form.controls.userName.errors?.["userName"]) {
+                Invalid format
+              }
+            </small>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            formControlName="email"
+            placeholder="email@example.com"
+          />
+
+          @if (form.controls.email.touched && form.controls.email.invalid) {
+            <small class="text-danger">
+              @if (form.controls.email.errors?.["required"]) {
+                Email is required
+              }
+              @if (form.controls.email.errors?.["email"]) {
+                Invalid format
+              }
+            </small>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control form-control-lg"
+            formControlName="password"
+            placeholder="********"
+          />
+
+          @if (form.controls.password.touched && form.controls.password.invalid) {
+            <small class="text-danger"> Password must be necessary </small> 
+          }
+        </div>
+
+
+        <div class="mb-3">
+          <label type="password"  class="form-label" >Confirm password</label>
+
+          <input 
+            type="password" 
+            class="form-control form-control-lg" 
+            formControlName="confirmPassword"
+            placeholder="*********">
+
+          @if (form.controls.confirmPassword.touched && form.controls.confirmPassword.invalid) {
+            <small class="text-danger"> Password confirm must be necessary </small> 
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100 btn-lg mt-2"
+          [disabled]="form.invalid"
+        >
+          Entrar
+        </button>
+      </form>
+    </div>
+  </main>
+</body>

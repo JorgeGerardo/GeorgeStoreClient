@@ -1,0 +1,78 @@
+<body class="container py-4">
+
+  @if (product === undefined) {
+    <!-- Loading -->
+    <div class="text-center my-5">
+      <div class="spinner-border"></div>
+    </div>
+  }
+
+  @else if (product === null) {
+    <!-- Not found -->
+    <div class="alert alert-danger text-center">
+      Product not found
+    </div>
+
+    <section class="text-center">
+        <a class="text-center" routerLink="/home">Go home</a>
+    </section>
+  }
+
+  @else {
+    <!-- Product -->
+    <div class="card shadow-sm">
+
+      <div class="row g-0">
+
+        <!-- Imagen -->
+        <section class="col-md-5">
+          <img 
+            [src]="product.image"
+            class="img-fluid rounded-start w-100 object-fit-cover"
+            style="height: 100%; max-height: 400px;"
+            alt="{{product.name}}"
+          />
+        </section>
+
+        <!-- Info -->
+        <section class="col-md-7">
+          <body class="card-body d-flex flex-column h-100">
+
+            <h2 class="card-title">{{ product.name }}</h2>
+
+            <p class="text-muted mb-2">
+              {{ product.categoryName }}
+            </p>
+
+
+            <p class="card-text flex-grow-1">
+              {{ product.description }}
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+
+              <span class="fs-3 fw-bold">
+                ${{ product.price }}
+              </span>
+
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-secondary" (click)="back()">
+                  Back
+                </button>
+
+                <button class="btn btn-dark" >
+                  Buy
+                </button>
+              </div>
+
+            </div>
+
+          </body>
+        </section>
+
+      </div>
+
+    </div>
+  }
+
+</body>
