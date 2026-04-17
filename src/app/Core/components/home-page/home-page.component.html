@@ -1,0 +1,11 @@
+<app-navbar />
+<main class="container py-3">
+  <h1 class="mb-4">Products</h1>
+
+  <body class="row g-3">
+    @for (product of products; track $index) {
+        <app-product-card [product]="product" class="col-12 col-sm-6 col-lg-4"/>
+    }
+  </body>
+
+</main>

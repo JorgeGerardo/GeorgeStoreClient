@@ -1,22 +1,23 @@
-import { Injectable, OnInit, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  isLogged = signal<boolean | undefined>(undefined);
+  _isLogged = signal<boolean | undefined>(undefined);
+  isLogged = this._isLogged.asReadonly();
 
   constructor() {
     if (this.recover() !== null) {
-      this.isLogged.set(true);
+      this._isLogged.set(true);
       return;
     }
-    this.isLogged.set(false);
+    this._isLogged.set(false);
   }
 
   public save(token: string) {
     document.cookie = `token=${token}; path=/; Secure; SameSite=Strict`;
-    this.isLogged.set(true);
+    this._isLogged.set(true);
   }
 
   public recover(): string | null {
@@ -29,6 +30,6 @@ export class TokenService {
 
   public logout() {
     document.cookie = 'token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
-    this.isLogged.set(false);
+    this._isLogged.set(false);
   }
 }

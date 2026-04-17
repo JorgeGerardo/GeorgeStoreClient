@@ -3,3 +3,5 @@ export interface QueryParams {
     offset: number;
     term?: string;
 }
+
+export default QueryParams;

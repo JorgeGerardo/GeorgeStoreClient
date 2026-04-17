@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { QueryParams } from '../../Core/Interfaces/queryparams';
-import { Product } from '../interfaces/product';
+import { QueryParams } from '@core/Interfaces/queryparams';
+import { Product } from '@product/interfaces/product';
 
 @Injectable({
   providedIn: 'root'

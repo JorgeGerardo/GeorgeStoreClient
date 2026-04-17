@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { TokenService } from '../../Auth/Services/token.service';
+import { TokenService } from '@auth/Services/token.service';
+import { CartService } from '@cart/services/cart.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-navbar',
@@ -70,6 +72,24 @@ import { TokenService } from '../../Auth/Services/token.service';
             </a>
           </li>
 
+          <li class="nav-item">
+            <!-- TODO: Modify the route: -->
+            <a 
+              class="nav-link position-relative ms-lg-2"
+              routerLink="/cart"
+              (click)="close()"
+              routerLinkActive="active">
+              <i class="bi bi-cart3 fs-5"></i>
+
+              <span *ngIf="itemsCount()"
+                class="position-absolute badge rounded-pill bg-danger"
+                style="top: 0px; right: -5px; font-size: 0.6rem;">
+                {{ itemsCount() }}
+              </span>
+              
+            </a>
+          </li>
+
         }
 
 
@@ -82,9 +102,10 @@ import { TokenService } from '../../Auth/Services/token.service';
 export class NavbarComponent {
   isMenuOpen = false;
   tokenService = inject(TokenService);
+  cartService = inject(CartService);
   isLogged = this.tokenService.isLogged;
+  itemsCount = toSignal<number | undefined>(this.cartService.GetCount(), { initialValue: undefined })
   
-
   toggle() {
     this.isMenuOpen = !this.isMenuOpen;
   }

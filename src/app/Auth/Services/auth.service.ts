@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import LoginRequest from '../Interfaces/LoginRequest';
-import { RegisterRequest } from '../Interfaces/register.request';
+import LoginRequest from '@auth/Interfaces/LoginRequest';
+import { RegisterRequest } from '@auth/Interfaces/register.request';
 import { catchError, map, of } from 'rxjs';
-import { LoginResponse } from '../Interfaces/login.response';
-import { TokenService } from './token.service';
+import { LoginResponse } from '@auth/Interfaces/login.response';
+import { TokenService } from '@auth/Services/token.service';
 
 @Injectable({
   providedIn: 'root',

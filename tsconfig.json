@@ -3,7 +3,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "rootDir": "./src",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@auth/*": ["./src/app/auth/*"],
+      "@cart/*": ["./src/app/cart/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@product/*": ["./src/app/product/*"]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
