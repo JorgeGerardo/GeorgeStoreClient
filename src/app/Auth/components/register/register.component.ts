@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from '@auth/Services/auth.service';
-import { RegisterRequest } from '@auth/Interfaces/register.request';
-import { passwordMatchValidator } from '@core/Validators/confirm.password';
+import { AuthService } from '@auth/services/auth.service';
+import { RegisterRequest } from '@auth/interfaces/register.request';
+import { passwordMatchValidator } from '@core/validators/confirm.password';
 
 @Component({
   selector: 'app-register',

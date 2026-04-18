@@ -17,7 +17,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     }
   `,
   styles: ``
-}) //TODO: No puedo elegir proyección? o algo así para los componentes hijos?
+})
 export class SpinnerComponent {
   private spinnerService = inject(SpinnerService);
   spinnerState = toSignal(this.spinnerService.spinnerState$);

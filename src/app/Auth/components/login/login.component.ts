@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from '@auth/Services/auth.service';
+import { AuthService } from '@auth/services/auth.service';
 import { Router } from '@angular/router';
-import LoginRequest from '@auth/Interfaces/LoginRequest';
+import LoginRequest from '@auth/interfaces/LoginRequest';
 
 
 @Component({

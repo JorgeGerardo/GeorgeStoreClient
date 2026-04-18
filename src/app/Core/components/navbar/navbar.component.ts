@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { TokenService } from '@auth/Services/token.service';
+import { TokenService } from '@auth/services/token.service';
 import { CartService } from '@cart/services/cart.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { toObservable } from '@angular/core/rxjs-interop';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -31,9 +33,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
       <ul class="navbar-nav ms-auto text-center text-lg-start">
 
-        <li class="nav-item">
+        <li class="nav-item mt-2 mt-lg-0">
           <a 
-            class="nav-link btn btn-outline-primary ms-lg-2" 
+            class="nav-link btn btn-outline-primary ms-lg-2"
             routerLink="/home" 
             (click)="close()"
             routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">
@@ -72,10 +74,22 @@ import { toSignal } from '@angular/core/rxjs-interop';
             </a>
           </li>
 
+
           <li class="nav-item">
-            <!-- TODO: Modify the route: -->
+            <a
+              class="nav-link ms-lg-2"
+              routerLink="/profile"
+              (click)="close()"
+              routerLinkActive="active">
+
+              <i class="bi bi-person-circle fs-5"></i>
+
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a 
-              class="nav-link position-relative ms-lg-2"
+              class="nav-link position-relative ms-lg-2 d-inline-flex align-items-center justify-content-center"
               routerLink="/cart"
               (click)="close()"
               routerLinkActive="active">
@@ -83,7 +97,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
               <span *ngIf="itemsCount()"
                 class="position-absolute badge rounded-pill bg-danger"
-                style="top: 0px; right: -5px; font-size: 0.6rem;">
+                style="top: -2px; right: -8px; font-size: 0.6rem;">
                 {{ itemsCount() }}
               </span>
               
@@ -104,8 +118,13 @@ export class NavbarComponent {
   tokenService = inject(TokenService);
   cartService = inject(CartService);
   isLogged = this.tokenService.isLogged;
-  itemsCount = toSignal<number | undefined>(this.cartService.GetCount(), { initialValue: undefined })
-  
+  itemsCount = toSignal<number | undefined>(
+    toObservable(this.isLogged).pipe(
+      switchMap(isLogged => isLogged ? this.cartService.GetCount() : of(undefined))
+    ),
+    { initialValue: undefined}
+  );
+
   toggle() {
     this.isMenuOpen = !this.isMenuOpen;
   }

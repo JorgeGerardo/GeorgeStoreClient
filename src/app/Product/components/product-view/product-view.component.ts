@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product } from '@product/interfaces/product';
-import { ProductService } from '@product/Services/product.service';
+import { ProductService } from '@product/services/product.service';
 import { Location } from '@angular/common';
 
 @Component({

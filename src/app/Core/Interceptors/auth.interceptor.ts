@@ -1,8 +1,9 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { TokenService } from '@auth/Services/token.service';
+import { TokenService } from '@auth/services/token.service';
 import { catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { SKIP_AUTH } from './http.context';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(TokenService)
@@ -10,6 +11,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = authService.recover();;
 
   if(!token)
+    return next(req);
+
+  if(req.context.get(SKIP_AUTH))
     return next(req);
 
   let clone = req.clone({
