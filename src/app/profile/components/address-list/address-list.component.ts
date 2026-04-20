@@ -1,15 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Address } from '@profile/interfaces/address';
 import { ProfileService } from '@profile/services/profile.service';
-import { AddressComponent } from '../address/address.component';
-import { NoAddressRegisteredComponent } from '../no-address-registered/no-address-registered.component';
+import { AddressComponent } from '@profile/components/address/address.component';
+import { NoAddressRegisteredComponent } from '@profile/components/no-address-registered/no-address-registered.component';
 
 @Component({
-  selector: 'app-directions',
+  selector: 'app-address-list',
   imports: [AddressComponent, NoAddressRegisteredComponent],
-  templateUrl: './addresses.component.html',
+  templateUrl: './address-list.component.html',
 })
-export class AddressesComponent implements OnInit {
+export class AddressListComponent implements OnInit {
   addressService = inject(ProfileService);
   addresses: Address[] = [];
 
