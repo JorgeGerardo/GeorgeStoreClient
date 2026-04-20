@@ -1,0 +1,70 @@
+<main class="container mt-4 d-flex justify-content-center">
+  <section class="card shadow-sm w-100" style="max-width: 600px;">
+    
+    <div class="card-body">
+      
+      <h4 class="fw-bold mb-4 text-center">Nueva dirección</h4>
+
+      <form [formGroup]="form" (ngSubmit)="register()">
+
+        <div class="mb-3">
+          <label class="form-label required">Alias</label>
+          <input type="text" class="form-control" formControlName="alias" placeholder="e.g. House, Work">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label required">Street</label>
+          <input type="text" class="form-control" formControlName="street">
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Ext number</label>
+            <input type="text" class="form-control" formControlName="externalNumber">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Int number</label>
+            <input type="text" class="form-control" formControlName="internalNumber">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label required">Neighborhood</label>
+          <input type="text" class="form-control" formControlName="neighborhood">
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label required">City</label>
+            <input type="text" class="form-control" formControlName="city">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label required">State</label>
+            <input type="text" class="form-control" formControlName="state">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label required">Postal Code</label>
+          <input type="text" class="form-control" formControlName="postalCode">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">References</label>
+          <textarea class="form-control" rows="3" formControlName="references" placeholder="e.g. Blue house, black gate..."></textarea>
+        </div>
+
+        <div class="d-grid">
+          <button class="btn btn-primary" [disabled]="form.invalid">
+            Save new address
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+</main>

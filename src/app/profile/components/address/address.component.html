@@ -1,0 +1,34 @@
+<main class="col-12">
+  <section class="card shadow-sm position-relative h-100">
+
+    <button 
+    type="button"
+    class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 border-0 bg-transparent"
+    (click)="delete(address().id)">
+    <i class="bi bi-x-lg text-danger"></i>
+    </button>
+
+    <div class="card-body">
+
+    <h6 class="card-title fw-bold mb-2">
+        {{ address().alias }}
+    </h6>
+
+    <p class="mb-1 small text-muted">
+        {{ address().street }} #{{ address().externalNumber }}
+        @if (address().internalNumber) {
+        - Int {{ address().internalNumber }}
+        }
+    </p>
+
+    <p class="mb-1 small">
+        {{ address().neighborhood }}
+    </p>
+
+    <p class="mb-0 small text-muted">
+        {{ address().city }}, {{ address().state }}
+    </p>
+
+    </div>
+  </section>
+</main>

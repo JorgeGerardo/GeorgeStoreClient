@@ -9,7 +9,8 @@
       "@auth/*": ["./src/app/auth/*"],
       "@cart/*": ["./src/app/cart/*"],
       "@core/*": ["./src/app/core/*"],
-      "@product/*": ["./src/app/product/*"]
+      "@product/*": ["./src/app/product/*"],
+      "@profile/*": ["./src/app/profile/*"],
     },
     "strict": true,
     "noImplicitOverride": true,
