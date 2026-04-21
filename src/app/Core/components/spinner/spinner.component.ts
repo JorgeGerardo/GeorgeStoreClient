@@ -8,15 +8,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
   imports: [CommonModule],
   template: `
     @if (spinnerState()) {
-      <main class="text-center mt-5">
-        <div class="spinner-border"></div>
-      </main>
-      <!-- <main class="d-flex justify-content-center align-items-center vh-100">
-        <div class="spinner-border"></div>
-      </main> -->
+      <div class="spinner-overlay">
+        <div class="spinner-border text-light"></div>
+      </div>
     }
   `,
-  styles: ``
+  styleUrl: `./spinner.component.css`
 })
 export class SpinnerComponent {
   private spinnerService = inject(SpinnerService);

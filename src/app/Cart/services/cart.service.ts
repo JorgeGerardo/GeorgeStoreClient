@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Cart } from '@cart/interfaces/cart'
 import { NoSpinner } from '@core/Interceptors/http.context';
+import { CartAddDto } from '@cart/interfaces/cart.add.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class CartService {
     return this.http.get<Cart>(`${this.API_URL}/cart`);
   }
 
-  public NoSpinner(){
-
+  public Add(request: CartAddDto){
+    return this.http.post(`${this.API_URL}/cart`, request);
   }
 }
 
