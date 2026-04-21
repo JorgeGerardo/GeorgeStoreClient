@@ -1,6 +1,7 @@
 .profile-container {
   height: 90vh;
   background: #f8f9fa;
+  padding-top: 40px;
 }
 
 .profile-card {
@@ -8,7 +9,7 @@
   max-width: 350px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .avatar {
@@ -22,4 +23,49 @@
   justify-content: center;
   font-size: 40px;
   color: #495057;
+}
+
+/* Carrusel */
+.profile-options {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.options-container {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  justify-content: center;
+}
+
+.options-container::-webkit-scrollbar {
+  display: none;
+}
+
+.option-card {
+  min-width: 120px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.option-card i {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 8px;
+  color: #0d6efd;
+}
+
+.option-card span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.option-card:hover {
+  transform: translateY(-3px);
 }

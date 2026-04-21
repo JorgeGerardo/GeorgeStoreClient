@@ -3,10 +3,11 @@ import { Address } from '@profile/interfaces/address';
 import { ProfileService } from '@profile/services/profile.service';
 import { AddressComponent } from '@profile/components/address/address.component';
 import { NoAddressRegisteredComponent } from '@profile/components/no-address-registered/no-address-registered.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-address-list',
-  imports: [AddressComponent, NoAddressRegisteredComponent],
+  imports: [AddressComponent, NoAddressRegisteredComponent, RouterLink],
   templateUrl: './address-list.component.html',
 })
 export class AddressListComponent implements OnInit {
