@@ -15,7 +15,7 @@ export class ProfileInformationComponent implements OnInit {
   userData: UserData | undefined = undefined;
 
   ngOnInit() {
-    this.profileService.GetProfile().subscribe(data => this.userData = data);
+    this.profileService.Get().subscribe(data => this.userData = data);
   }
 
 

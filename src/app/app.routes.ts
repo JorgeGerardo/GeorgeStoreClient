@@ -20,4 +20,8 @@ export const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('@profile/profile.routes')
   },
+  {
+    path: 'orders',
+    loadChildren: () => import('@order/oder.routes')
+  },
 ];

@@ -11,6 +11,7 @@
       "@core/*": ["./src/app/core/*"],
       "@product/*": ["./src/app/product/*"],
       "@profile/*": ["./src/app/profile/*"],
+      "@order/*": ["./src/app/order/*"],
     },
     "strict": true,
     "noImplicitOverride": true,

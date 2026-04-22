@@ -1,0 +1,93 @@
+<main class="container mt-4 d-flex justify-content-center">
+
+  <section class="card shadow-sm w-100" style="max-width: 600px;">
+
+    <div class="card-body">
+
+      <h4 class="fw-bold mb-4 text-center">Add Payment Method</h4>
+
+      <form [formGroup]="form" (ngSubmit)="save()">
+
+        <!-- Card number -->
+        <div class="mb-3">
+          <label class="form-label required">Card Number</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="cardNumber"
+            placeholder="1234 5678 9012 3456"
+          >
+        </div>
+
+        <!-- Card holder -->
+        <div class="mb-3">
+          <label class="form-label required">Card Holder Name</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="cardHolderName"
+            placeholder="Name as it appears on card"
+          >
+        </div>
+
+        <!-- Brand -->
+        <div class="mb-3">
+          <label class="form-label required">Card Brand</label>
+          <select class="form-select" formControlName="brand">
+            <option value="">Select brand</option>
+            <option value="Visa">Visa</option>
+            <option value="Mastercard">Mastercard</option>
+            <option value="Amex">American Express</option>
+          </select>
+        </div>
+
+        <!-- Expiration -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label required">Exp Month</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="expMonth"
+              placeholder="MM"
+            >
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label required">Exp Year</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="expYear"
+              placeholder="YYYY"
+            >
+          </div>
+        </div>
+
+        <!-- Default -->
+        <div class="form-check mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            formControlName="isDefault"
+            id="defaultCheck"
+          >
+          <label class="form-check-label" for="defaultCheck">
+            Set as default payment method
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <div class="d-grid">
+          <button class="btn btn-primary btn-lg" [disabled]="form.invalid">
+            Save Card
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+</main>

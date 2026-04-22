@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddressCreateDto } from '@profile/interfaces/address';
-import { ProfileService } from '@profile/services/profile.service';
+import { AddressService } from '@profile/services/address.service';
 
 @Component({
   selector: 'app-create-address',
@@ -10,7 +10,7 @@ import { ProfileService } from '@profile/services/profile.service';
   templateUrl: './create-address.component.html',
 })
 export class CreateAddressComponent {
-  profileService = inject(ProfileService);
+  addressService = inject(AddressService);
   fb = inject(FormBuilder);
   router = inject(Router);
 
@@ -27,7 +27,7 @@ export class CreateAddressComponent {
   });
 
   register() {
-    this.profileService
+    this.addressService
       .Add(this.form.value as AddressCreateDto)
       .subscribe((v) => {
         if (v) this.router.navigate(['profile', 'address']);

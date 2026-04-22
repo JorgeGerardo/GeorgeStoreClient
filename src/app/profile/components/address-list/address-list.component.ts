@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Address } from '@profile/interfaces/address';
-import { ProfileService } from '@profile/services/profile.service';
 import { AddressComponent } from '@profile/components/address/address.component';
 import { NoAddressRegisteredComponent } from '@profile/components/no-address-registered/no-address-registered.component';
 import { RouterLink } from '@angular/router';
+import { AddressService } from '@profile/services/address.service';
 
 @Component({
   selector: 'app-address-list',
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './address-list.component.html',
 })
 export class AddressListComponent implements OnInit {
-  addressService = inject(ProfileService);
+  addressService = inject(AddressService);
   addresses: Address[] = [];
 
   ngOnInit() {
