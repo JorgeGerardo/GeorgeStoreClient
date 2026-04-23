@@ -1,17 +1,13 @@
-import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Cart } from '@cart/interfaces/cart'
 import { NoSpinner } from '@core/Interceptors/http.context';
 import { CartAddDto } from '@cart/interfaces/cart.add.dto';
+import { BaseService } from '@core/services/base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
-  API_URL = environment.apiUrl;
-  http = inject(HttpClient);
-
+export class CartService extends BaseService {
   public GetCount(){
     return this.http.get<number>(`${this.API_URL}/cart/count`, {context: NoSpinner()});
   }

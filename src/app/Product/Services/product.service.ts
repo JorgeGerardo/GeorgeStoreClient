@@ -1,22 +1,19 @@
-import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { QueryParams } from '@core/Interfaces/queryparams';
 import { Product } from '@product/interfaces/product';
 import { NoAuth } from '@core/Interceptors/http.context';
+import { BaseService } from '@core/services/base.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
-  urlApi = environment.apiUrl;
-  http = inject(HttpClient);
+export class ProductService extends BaseService {
 
   public GetProducts(prms?: QueryParams){
-    return this.http.get<Product[]>(`${this.urlApi}/Product`, {params: {...prms}, context: NoAuth()}); 
+    return this.http.get<Product[]>(`${this.API_URL}/Product`, {params: {...prms}, context: NoAuth()}); 
   }
 
   public GetById(id: number | string){
-    return this.http.get<Product | null>(`${this.urlApi}/Product/${id}`); 
+    return this.http.get<Product | null>(`${this.API_URL}/Product/${id}`); 
   }
 }

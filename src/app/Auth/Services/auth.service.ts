@@ -1,22 +1,19 @@
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 import LoginRequest from '@auth/interfaces/LoginRequest';
 import { RegisterRequest } from '@auth/interfaces/register.request';
 import { catchError, map, of } from 'rxjs';
 import { LoginResponse } from '@auth/interfaces/login.response';
 import { TokenService } from '@auth/services/token.service';
+import { BaseService } from '@core/services/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  http = inject(HttpClient);
+export class AuthService extends BaseService {
   tokenService = inject(TokenService);
-  urlApi = environment.apiUrl;
 
   public login(request: LoginRequest) {
-    return this.http.post(`${this.urlApi}/User/login`, request).pipe(
+    return this.http.post(`${this.API_URL}/User/login`, request).pipe(
       map((response) => {
         this.tokenService.save((response as LoginResponse).token);
         return true;
@@ -26,7 +23,7 @@ export class AuthService {
   }
 
   public register(request: RegisterRequest) {
-    return this.http.post(`${this.urlApi}/User/register`, request);
+    return this.http.post(`${this.API_URL}/User/register`, request);
   }
 
 }

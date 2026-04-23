@@ -9,11 +9,11 @@ import { Order } from '@order/interfaces/order';
 export class OrderService extends BaseService {
 
   Get(){
-    return this.http.get<Order[]>(`${this.URL_API}/order`);
+    return this.http.get<Order[]>(`${this.API_URL}/order`);
   }
 
   GetById(orderId: number){
-    return this.http.get<Order>(`${this.URL_API}/order/${orderId}`);
+    return this.http.get<Order>(`${this.API_URL}/order/${orderId}`);
   }
 
 

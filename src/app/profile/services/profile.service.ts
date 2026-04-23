@@ -1,16 +1,13 @@
-import { inject, Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { UserData } from '@profile/interfaces/user-data';
+import { BaseService } from '@core/services/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileService {
-  URL_API = environment.apiUrl;
-  http = inject(HttpClient);
+export class ProfileService extends BaseService {
 
   public Get() {
-    return this.http.get<UserData>(`${this.URL_API}/user/profile`);
+    return this.http.get<UserData>(`${this.API_URL}/user/profile`);
   }
 }
