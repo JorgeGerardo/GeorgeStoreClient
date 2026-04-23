@@ -1,0 +1,82 @@
+<main class="col-12">
+
+  <article class="card shadow border-0 order-card">
+
+    <section class="card-body p-4">
+
+        <header class="d-flex justify-content-between align-items-start mb-4">
+
+            <div>
+                <h4 class="fw-bold mb-1">
+                Order #{{ order().id }}
+                </h4>
+
+                <p class="text-muted mb-0 fs-5">
+                {{ order().dateUtc | date:'longDate' }}
+                </p>
+            </div>
+
+        <span class="badge status-badge"
+            [ngClass]="{
+                'bg-warning text-dark': order().status === OrderStatus.Pending,
+                'bg-primary': order().status === OrderStatus.Paid,
+                'bg-info text-dark': order().status === OrderStatus.Processing,
+                'bg-success': order().status === OrderStatus.Completed,
+                'bg-danger': order().status === OrderStatus.Canceled,
+                'bg-secondary': order().status === OrderStatus.PaymentFailed
+            }"
+            >
+            {{ OrderStatus[order().status] }}
+        </span>
+        </header>
+
+        <section class="d-flex align-items-center gap-4 mb-4 flex-wrap">
+
+            <section class="position-relative product-preview">
+
+                <img
+                [src]="order().details[0].image"
+                alt="product"
+                class="rounded shadow-sm"
+                />
+
+                @if (order().details.length > 1) {
+                <span class="badge extra-badge">
+                    +{{ getTotalItems() - 1 }}
+                </span>
+                }
+
+            </section>
+
+            <div class="flex-grow-1">
+
+                <p class="fw-semibold fs-4 mb-2">
+                {{ getTotalItems() }} items
+                </p>
+
+                <p class="text-muted fs-5 mb-1">
+                Order total
+                </p>
+
+                <p class="fw-bold fs-3 mb-0 text-primary">
+                ${{ order().total }}
+                </p>
+
+            </div>
+
+        </section>
+
+        <footer class="d-flex gap-3 flex-wrap">
+            <button class="btn btn-primary btn-lg flex-grow-1" [routerLink]="[order().id]">
+                View Details
+            </button>
+
+            <button class="btn btn-outline-secondary btn-lg flex-grow-1">
+                Reorder
+            </button>
+        </footer>
+
+    </section>
+
+  </article>
+</main>

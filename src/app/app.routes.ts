@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from '@core/components/home-page/home-page.component';
+import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
@@ -24,4 +25,8 @@ export const routes: Routes = [
     path: 'orders',
     loadChildren: () => import('@order/oder.routes')
   },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];

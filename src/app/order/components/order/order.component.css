@@ -1,0 +1,33 @@
+.order-card {
+  border-radius: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Image */
+.product-preview img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+/* Badge more products */
+.extra-badge {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  background: #212529;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.status-badge {
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 20px;
+}

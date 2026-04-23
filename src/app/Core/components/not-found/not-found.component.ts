@@ -6,7 +6,7 @@ import { RouterLink } from "@angular/router";
   imports: [RouterLink],
   template: `
   <main class="container vh-100 d-flex align-items-center justify-content-center">
-    <body class="text-center">
+    <section class="text-center">
 
       <h1 class="display-1 fw-bold text-primary">404</h1>
 
@@ -20,7 +20,7 @@ import { RouterLink } from "@angular/router";
         Go home
       </a>
 
-    </body>
+    </section>
   </main>  `,
   styles: ``
 })

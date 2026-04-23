@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from '@core/components/navbar/navbar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-order-page',
-  imports: [],
+  imports: [NavbarComponent, RouterOutlet],
   template: `
-    <p>
-      order-page works!
-    </p>
+    <app-navbar />
+    <router-outlet />
   `,
-  styles: ``
+  styles: ``,
 })
-export class OrderPageComponent {
-
-}
+export class OrderPageComponent {}

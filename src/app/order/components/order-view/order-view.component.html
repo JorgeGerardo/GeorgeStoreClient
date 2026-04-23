@@ -1,0 +1,116 @@
+<main class="container mt-4">
+
+  @if (order) {
+
+    <!-- HEADER -->
+    <header class="card shadow border-0 mb-4">
+      <div class="card-body p-4">
+
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+
+          <div>
+            <h3 class="fw-bold mb-1">
+              Order #{{ order.id }}
+            </h3>
+
+            <p class="text-muted fs-5 mb-0">
+              {{ order.dateUtc | date:'longDate' }}
+            </p>
+          </div>
+
+          <!-- STATUS -->
+          <span class="badge fs-5 px-3 py-2"
+            [ngClass]="{
+              'bg-warning text-dark': order.status === orderStatus.Pending,
+              'bg-primary': order.status === orderStatus.Paid,
+              'bg-info text-dark': order.status === orderStatus.Processing,
+              'bg-success': order.status === orderStatus.Completed,
+              'bg-danger': order.status === orderStatus.Canceled,
+              'bg-secondary': order.status === orderStatus.PaymentFailed
+            }"
+          >
+            {{ getStatusLabel(order.status) }}
+          </span>
+
+        </div>
+
+      </div>
+    </header>
+
+    <!-- PRODUCTS -->
+    <section class="card shadow border-0 mb-4">
+      <div class="card-body p-4">
+
+        <h4 class="fw-bold mb-4">Products</h4>
+
+        <div class="d-flex flex-column gap-3">
+
+          @for (item of order.details; track item.id) {
+
+            <article class="d-flex gap-3 align-items-center product-item">
+
+              <img [routerLink]="['product', 'p', item.id]"
+                [src]="item.image"
+                class="rounded shadow-sm"
+                style="width: 90px; height: 90px; object-fit: cover;"
+              />
+
+              <div class="flex-grow-1">
+
+                <p class="fw-semibold fs-5 mb-1">
+                  Product #{{ item.productId }}
+                </p>
+
+                <p class="text-muted mb-1">
+                  Quantity: {{ item.quantity }}
+                </p>
+
+                <p class="text-muted mb-0">
+                  Unit price: ${{ item.unitPrice }}
+                </p>
+
+              </div>
+
+              <div class="text-end">
+                <p class="fw-bold fs-5 mb-0">
+                  ${{ item.subTotal }}
+                </p>
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="card shadow border-0">
+      <div class="card-body p-4">
+
+        <h4 class="fw-bold mb-4">Summary</h4>
+
+        <div class="d-flex justify-content-between mb-2 fs-5">
+          <span>Items</span>
+          <span>{{ getTotalItems(order) }}</span>
+        </div>
+
+        <div class="d-flex justify-content-between mb-3 fs-5">
+          <span>Status</span>
+          <span>{{ getStatusLabel(order.status) }}</span>
+        </div>
+
+        <hr>
+
+        <div class="d-flex justify-content-between fs-3 fw-bold">
+          <span>Total</span>
+          <span class="text-primary">${{ order.total }}</span>
+        </div>
+
+      </div>
+    </section>
+
+  }
+</main>
