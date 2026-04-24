@@ -3,9 +3,22 @@
   <h1 class="mb-4">Products</h1>
 
   <body class="row g-3">
-    @for (product of products; track $index) {
+    @for (product of paginationInf.items; track product.id) {
       <app-product-card [product]="product" class="col-12 col-sm-6 col-lg-4"/>
     }
   </body>
+
+  <section class="d-flex justify-content-center mt-4">
+
+    <ngb-pagination
+      [collectionSize]="paginationInf.totalCount"
+      [(page)]="paginationInf.page"
+      [pageSize]="paginationInf.query.pageSize"
+      [maxSize]="5"
+      [boundaryLinks]="true"
+      (pageChange)="onPageChange($event)">
+    </ngb-pagination>
+
+  </section>
 
 </main>
