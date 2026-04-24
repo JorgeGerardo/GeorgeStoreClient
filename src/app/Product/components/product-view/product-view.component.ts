@@ -3,6 +3,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product } from '@product/interfaces/product';
 import { ProductService } from '@product/services/product.service';
 import { Location } from '@angular/common';
+import { CartService } from '@cart/services/cart.service';
+import { CartAddDto } from '@cart/interfaces/cart.add.dto';
 
 @Component({
   selector: 'app-product-view',
@@ -12,6 +14,7 @@ import { Location } from '@angular/common';
 export class ProductViewComponent implements OnInit {
   route = inject(ActivatedRoute);
   productService = inject(ProductService);
+  cartService = inject(CartService);
   localtion = inject(Location);
   product: Product | null | undefined = undefined;
 
@@ -23,7 +26,11 @@ export class ProductViewComponent implements OnInit {
         .subscribe((product) => (this.product = product));
   }
 
-  back(){
+  back() {
     this.localtion.back();
+  }
+
+  AddToCart(productId: number) {
+    this.cartService.Add({ productId, quantity: 1 } as CartAddDto).subscribe();
   }
 }

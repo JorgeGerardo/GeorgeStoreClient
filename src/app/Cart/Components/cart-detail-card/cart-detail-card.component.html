@@ -1,0 +1,50 @@
+<main class="card mb-3">
+  <article class="row g-0 align-items-center">
+    <!-- IMAGE -->
+    <section class="col-4 col-md-3">
+      <img
+        [src]="item().image"
+        class="img-fluid rounded-start"
+        alt="{{ item().name }}"
+      />
+    </section>
+
+    <!-- INFO -->
+    <section class="col-8 col-md-6">
+      <div class="card-body">
+        <h5 class="card-title mb-1">{{ item().name }}</h5>
+        <p class="text-muted small mb-2">
+          {{ item().description }}
+        </p>
+
+        <div class="fw-bold">${{ item().price }}</div>
+      </div>
+    </section>
+
+    <!-- ACTIONS -->
+    <section class="col-md-3 text-center p-3">
+      <div
+        class="d-flex justify-content-center align-items-center mb-2"
+      >
+        <button [disabled]="item().quantity === 1" class="btn btn-outline-secondary btn-sm me-2" (click)="decreaseEvent.emit(item().productId)">
+          <i class="bi bi-dash"></i>
+        </button>
+
+        <span class="fw-bold">{{ item().quantity }}</span>
+
+        <button class="btn btn-outline-secondary btn-sm ms-2" (click)="increaseEvent.emit(item().productId)">
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
+
+      <div class="fw-bold mb-2">
+        ${{ item().price * item().quantity }}
+      </div>
+
+      <button class="btn btn-outline-danger btn-sm" (click)="deleteEvent.emit(item().productId)">
+        <i class="bi bi-trash"></i>
+      </button>
+    </section>
+
+  </article>
+</main>
