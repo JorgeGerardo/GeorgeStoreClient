@@ -6,7 +6,7 @@ import { ProductCardComponent } from '@product/components/product-card/product-c
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { QueryParams } from '@core/Interfaces/queryparams';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +18,7 @@ export class HomePageComponent implements OnInit {
   productService = inject(ProductService);
   activeRoute = inject(ActivatedRoute);
   router = inject(Router);
-  search = new FormControl('', [Validators.minLength(1)]);
+  search = new FormControl('');
 
   paginationInf = {
     totalCount: 0,
@@ -34,6 +34,7 @@ export class HomePageComponent implements OnInit {
     this.activeRoute.queryParams.subscribe(params => {
       this.paginationInf.page = +params['page'] || 1;
       this.paginationInf.query.term = params['term'] || '';
+      this.search.setValue(this.paginationInf.query.term!, { emitEvent: false });
 
       this.paginationInf.query.offset =
         (this.paginationInf.page - 1) * this.paginationInf.query.pageSize;
@@ -41,16 +42,21 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  onPageChange(page: number, term?: string) {
+  onPageChange(page: number) {
+    const term = this.paginationInf.query.term;
+
     this.router.navigate([], {
-      queryParams: { page, term: term?.trim() !== '' ? term?.trim() : null},
+      queryParams: {
+        page,
+        term: term?.trim() !== '' ? term?.trim() : null
+      },
       queryParamsHandling: 'merge'
     });
   }
 
   loadProducts() {
     this.productService
-      .GetProducts(this.paginationInf.query)
+      .Get(this.paginationInf.query)
       .subscribe((products) => {
         this.paginationInf.items = products.items;
         this.paginationInf.totalCount = products.total;
@@ -58,9 +64,16 @@ export class HomePageComponent implements OnInit {
   }
 
   write(keyEvent:KeyboardEvent){
-    if(keyEvent.key !== 'Enter')
-      return;
+    if (keyEvent.key !== 'Enter') return;
 
-    this.onPageChange(1, this.search.value!)
+    const term = this.search.value ?? '';
+
+    this.router.navigate([], {
+      queryParams: {
+        page: 1,
+        term: term.trim() !== '' ? term.trim() : null
+      },
+      queryParamsHandling: 'merge'
+    });
   }
 }

@@ -1,12 +1,47 @@
 <main class="container mt-4">
 
-  @if (orders.length > 0) {
+  @if (paginationInf.items.length > 0) {
 
     <section class="row gy-4">
 
-      @for (order of orders; track order.id) {
+      <section class="mb-4">
+        <div class="input-group input-group-lg shadow-sm">
+
+          <span class="input-group-text bg-white border-end-0">
+            <i class="bi bi-search"></i>
+          </span>
+
+          <input
+            [formControl]="search"
+            type="text"
+            class="form-control border-start-0"
+            placeholder="Search products..."
+            (keydown)="write($event)"
+          />
+
+          <button class="btn btn-primary">
+            Search
+          </button>
+
+        </div>
+      </section>
+
+      @for (order of this.paginationInf.items; track order.id) {
         <app-order [order]="order"/>
       }
+
+      <section class="d-flex justify-content-center mt-4">
+        <ngb-pagination
+          [collectionSize]="paginationInf.totalCount"
+          [(page)]="paginationInf.page"
+          [pageSize]="paginationInf.query.pageSize"
+          [maxSize]="5"
+          [boundaryLinks]="false"
+          (pageChange)="onPageChange($event)">
+        </ngb-pagination>
+
+      </section>
+
 
     </section>
 
