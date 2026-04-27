@@ -7,10 +7,7 @@
         <header class="d-flex justify-content-between align-items-start mb-4">
 
             <div>
-                <h4 class="fw-bold mb-1">
-                Order #{{ order().id }}
-                </h4>
-
+                <h4 class="fw-bold mb-1"> Order id #{{order().id}} </h4>
                 <p class="text-muted mb-0 fs-5">
                 {{ order().dateUtc | date:'longDate' }}
                 </p>

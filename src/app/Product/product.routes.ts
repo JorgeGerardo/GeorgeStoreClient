@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: '',
     component: ProductPageComponent,
-    children: [{ path: 'p/:id', component: ProductViewComponent }],
+    children: [{ path: ':id', component: ProductViewComponent }],
   },
 ];
 

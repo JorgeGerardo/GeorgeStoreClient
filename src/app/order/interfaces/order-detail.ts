@@ -6,4 +6,5 @@ export interface OrderDetail {
     subTotal: number;
     quantity: number;
     image: string;
+    name: string;
 }
