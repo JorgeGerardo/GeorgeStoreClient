@@ -4,7 +4,7 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class TokenService {
-  _isLogged = signal<boolean | undefined>(undefined);
+  private _isLogged = signal<boolean | undefined>(undefined);
   isLogged = this._isLogged.asReadonly();
 
   constructor() {

@@ -4,9 +4,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { TokenService } from '@auth/services/token.service';
 import { CartService } from '@cart/services/cart.service';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -26,7 +23,7 @@ import { of, switchMap } from 'rxjs';
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menú -->
+    <!-- Menu -->
     <div 
       [ngbCollapse]="!isMenuOpen" 
       class="collapse navbar-collapse">
@@ -118,12 +115,7 @@ export class NavbarComponent {
   tokenService = inject(TokenService);
   cartService = inject(CartService);
   isLogged = this.tokenService.isLogged;
-  itemsCount = toSignal<number | undefined>(
-    toObservable(this.isLogged).pipe(
-      switchMap(isLogged => isLogged ? this.cartService.GetCount() : of(undefined))
-    ),
-    { initialValue: undefined}
-  );
+  itemsCount = this.cartService.count;
 
   toggle() {
     this.isMenuOpen = !this.isMenuOpen;
