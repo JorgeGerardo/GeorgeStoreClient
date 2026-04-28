@@ -6,83 +6,15 @@
       Shopping Cart
     </h2>
 
-    <!-- TODO: Address selection -->
-     <section>
-        <h6 class="fw-bold mb-2 d-flex justify-content-between align-items-center"
-            data-bs-toggle="collapse"
-            data-bs-target="#addressCollapse"
-            style="cursor: pointer;">
-        Shipping Address
-        <i class="bi bi-chevron-down"></i>
-        </h6>
+    <app-address-selection 
+        (selectEvent)="selectAddress($event)" 
+        [addresses]="this.addresses" 
+    />
 
-        @if (selectedAddressId) {
-          <div class="small text-muted mb-2">
-              Selected:
-              {{ selectedAddress?.alias }}
-          </div>
-        }
-
-
-        <div id="addressCollapse" class="collapse show">
-        <div class="row mb-3">
-            @for (address of addresses; track address.id) {
-            <div class="col-12 mb-2">
-                <div
-                class="selectable-item"
-                [class.selected]="selectedAddressId === address.id"
-                (click)="selectedAddressId = address.id"
-                >
-                <div class="fw-semibold">{{ address.alias }}</div>
-                <div class="small text-muted">
-                    {{ address.street }} #{{ address.externalNumber }},
-                    {{ address.city }}
-                </div>
-                </div>
-            </div>
-            }
-        </div>
-        </div>
-    </section>
-
-    <!-- TODO: Payment-method selection -->
-     <section>
-        <h6 class="fw-bold mb-2 d-flex justify-content-between align-items-center"
-            (click)="isPaymentOpen = !isPaymentOpen"
-            style="cursor: pointer;">
-            Payment Method
-            <i class="bi bi-chevron-down"></i>
-        </h6>
-
-        @if (selectedPaymentMethodId) {
-          <div class="small text-muted mb-2">
-              Selected:
-              <!-- TODO: Marca missing -->
-              {{ selectedPaymentMethod?.lastDigits }}
-          </div>
-        }
-
-
-        <div class="collapse" [class.show]="isPaymentOpen">
-        <div class="row mb-3">
-            @for (pm of paymentMethods; track pm.id) {
-            <div class="col-12 mb-2">
-                <div
-                class="selectable-item"
-                [class.selected]="selectedPaymentMethodId === pm.id"
-                (click)="selectPaymentMethod(pm.id)"
-                >
-                <div class="fw-semibold">{{ pm.cardHolderName }}</div>
-                <div class="small text-muted">
-                    **** {{ pm.lastDigits }} • Exp {{ pm.expYear }}
-                </div>
-                </div>
-            </div>
-            }
-        </div>
-        </div>
-    </section>
-
+    <app-payment-method-selection 
+        (paymentEvent)="selectPaymentMethod($event)" 
+        [paymentMethods]="this.paymentMethods"
+    />
 
     <footer class="row">
         <div class="col-lg-8">
@@ -93,21 +25,21 @@
 
         <!-- SUMMARY -->
         <section class="col-lg-4">
-            <div class="card shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title mb-3">SUMMARY</h5>
+            <article class="card shadow-sm">
+                <main class="card-body">
+                    <h5 class="card-title mb-3">SUMMARY</h5>
 
-                <div class="d-flex justify-content-between mb-2">
-                <span>Total</span>
-                <strong>${{ cart.total }}</strong>
-                </div>
+                    <div class="d-flex justify-content-between mb-2">
+                    <span>Total</span>
+                    <strong>${{ cart.total }}</strong>
+                    </div>
 
-                <button (click)="purchase()" [disabled]="!selectedAddressId || !selectedPaymentMethodId" class="btn btn-primary w-100 mt-3">
-                    <i class="bi bi-credit-card me-2"></i>
-                    Purchase
-                </button>
-            </div>
-            </div>
+                    <button (click)="purchase()" [disabled]="!selectedAddressId || !selectedPaymentMethodId" class="btn btn-primary w-100 mt-3">
+                        <i class="bi bi-credit-card me-2"></i>
+                        Purchase
+                    </button>
+                </main>
+            </article>
         </section>
     </footer>
     

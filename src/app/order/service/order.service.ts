@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { PurchaseRequest } from '@cart/interfaces/purchase-request';
 import { PagedResult } from '@core/Interfaces/paged-result';
 import { QueryParams } from '@core/Interfaces/queryparams';
 import { BaseService } from '@core/services/base.service';
 import { Order } from '@order/interfaces/order';
+import { catchError, of, switchMap } from 'rxjs';
 
 
 @Injectable({
@@ -16,6 +18,13 @@ export class OrderService extends BaseService {
 
   GetById(orderId: number){
     return this.http.get<Order>(`${this.API_URL}/order/${orderId}`);
+  }
+
+  Buy(request: PurchaseRequest){
+    return this.http.post(`${this.API_URL}/order`, request).pipe(
+      switchMap(() => of(true)),
+      catchError(() => of(false))
+    );
   }
 
 

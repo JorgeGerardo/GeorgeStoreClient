@@ -1,0 +1,35 @@
+<main>
+    <h6 class="fw-bold mb-2 d-flex justify-content-between align-items-center"
+        (click)="isAddressOpen = !isAddressOpen"
+        style="cursor: pointer;">
+        Shipping Address
+        <i class="bi bi-chevron-down"></i>
+    </h6>
+
+    @if (selectedAddressId) {
+      <div class="small text-muted mb-2">
+          Selected:
+          {{ selectedAddress?.alias }}
+      </div>
+    }
+
+    <div id="addressCollapse" class="collapse" [class.show]="isAddressOpen">
+        <div class="row mb-3">
+            @for (address of addresses(); track address.id) {
+            <div class="col-12 mb-2">
+                <div
+                class="selectable-item"
+                [class.selected]="selectedAddressId === address.id"
+                (click)="selectPaymentMethod(address.id)"
+                >
+                <div class="fw-semibold">{{ address.alias }}</div>
+                <div class="small text-muted">
+                    {{ address.street }} #{{ address.externalNumber }},
+                    {{ address.city }}
+                </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</main>

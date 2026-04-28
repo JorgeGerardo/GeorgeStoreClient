@@ -1,0 +1,15 @@
+.selectable-item {
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.15s ease;
+}
+
+.selectable-item:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+.selectable-item.selected {
+  background-color: rgba(13, 110, 253, 0.08);
+  border-left: 3px solid #0d6efd;
+}
