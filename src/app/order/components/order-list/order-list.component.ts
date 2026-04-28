@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Order } from '@order/interfaces/order';
 import { OrderService } from '@order/service/order.service';
-import { OrderComponent } from '../order/order.component';
+import { OrderComponent } from '@order/components/order/order.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { QueryParams } from '@core/Interfaces/queryparams';

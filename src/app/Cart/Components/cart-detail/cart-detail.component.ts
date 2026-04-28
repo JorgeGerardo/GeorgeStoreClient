@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '@cart/services/cart.service';
 import { Cart } from '@cart/interfaces/cart';
 import { CartDetailCardComponent } from "@cart/components/cart-detail-card/cart-detail-card.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cart-detail',
-  imports: [CartDetailCardComponent],
+  imports: [CartDetailCardComponent, RouterLink],
   templateUrl: './cart-detail.component.html',
 })
 export class CartDetailComponent implements OnInit {

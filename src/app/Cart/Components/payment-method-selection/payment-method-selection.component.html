@@ -1,0 +1,36 @@
+<main>
+    <h6 class="fw-bold mb-2 d-flex justify-content-between align-items-center"
+        (click)="isPaymentOpen = !isPaymentOpen"
+        style="cursor: pointer;">
+        Payment Method
+        <i class="bi bi-chevron-down"></i>
+    </h6>
+
+    @if (selectedPaymentMethodId) {
+      <div class="small text-muted mb-2">
+          Selected:
+          {{ selectedPaymentMethod?.brand }}
+          {{ selectedPaymentMethod?.lastDigits }}
+      </div>
+    }
+
+
+    <header class="collapse" [class.show]="isPaymentOpen">
+        <section class="row mb-3">
+            @for (pm of paymentMethods(); track pm.id) {
+              <div class="col-12 mb-2">
+                  <main
+                  class="selectable-item"
+                  [class.selected]="selectedPaymentMethodId === pm.id"
+                  (click)="selectPaymentMethod(pm.id)"
+                  >
+                      <div class="fw-semibold">{{ pm.cardHolderName }}</div>
+                      <div class="small text-muted">
+                          **** {{ pm.lastDigits }} • Exp {{ pm.expYear }}
+                      </div>
+                  </main>
+              </div>
+            }
+        </section>
+    </header>
+</main>

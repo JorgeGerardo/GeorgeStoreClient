@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { PaymentMethod } from '@profile/interfaces/payment-method';
 import { PaymentMethodService } from '@profile/services/payment-method.service';
-import { PaymentMethodCardComponent } from "../payment-method-card/payment-method-card.component";
+import { PaymentMethodCardComponent } from '@profile/components/payment-method-card/payment-method-card.component';
 import { RouterLink } from "@angular/router";
 
 @Component({
@@ -27,7 +27,6 @@ export class PaymentMethodListComponent implements OnInit {
   }
 
   setAsDefault(id: number){
-    console.log('here');
     this.paymentMethodService.SetAsDefault(id).subscribe(v => {
       if (v)
         this.loadPaymentMethods();

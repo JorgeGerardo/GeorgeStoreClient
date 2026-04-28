@@ -1,0 +1,59 @@
+<main class="card mb-3 shadow-sm border-0">
+  <article class="row g-0 align-items-center">
+
+    <!-- IMAGE -->
+    <section class="col-4 col-md-2">
+      <a [routerLink]="['/', 'product', item().productId]">
+          <img
+          [src]="item().image"
+          class="img-fluid rounded-start"
+          alt="{{ item().name }}"
+          >
+      </a>
+    </section>
+
+    <!-- INFO -->
+    <section class="col-8 col-md-7">
+      <div class="card-body py-2">
+
+        <a class="text-reset text-decoration-none" [routerLink]="['/', 'product', item().productId]">
+          <h6 class="fw-bold mb-1">
+            {{ item().name }}
+          </h6>
+        </a>
+
+        <p class="text-muted small mb-2">
+          {{ item().description }}
+        </p>
+
+        <div class="small text-muted">
+          Precio unitario:
+          <span class="fw-semibold text-dark">
+            ${{ item().price }}
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="col-12 col-md-3 text-md-end p-3">
+
+      <div class="small text-muted">
+        Cantidad
+      </div>
+      <div class="fw-semibold mb-2">
+        {{ item().quantity }}
+      </div>
+
+      <div class="small text-muted">
+        Subtotal
+      </div>
+      <div class="fw-bold fs-5">
+        ${{ item().price * item().quantity }}
+      </div>
+
+    </section>
+
+  </article>
+</main>

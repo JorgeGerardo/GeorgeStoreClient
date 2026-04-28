@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { SpinnerService } from '../../services/spinner.service';
+import { SpinnerService } from '@core/services/spinner.service';
 import { CommonModule } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 
