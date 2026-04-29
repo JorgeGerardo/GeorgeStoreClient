@@ -20,10 +20,9 @@ export class OrderService extends BaseService {
     return this.http.get<Order>(`${this.API_URL}/order/${orderId}`);
   }
 
-  Buy(request: PurchaseRequest){
-    return this.http.post(`${this.API_URL}/order`, request).pipe(
-      switchMap(() => of(true)),
-      catchError(() => of(false))
+  Purchase(request: PurchaseRequest){
+    return this.http.post<number>(`${this.API_URL}/order`, request).pipe(
+      catchError(() => of(-1))
     );
   }
 

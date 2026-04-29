@@ -42,13 +42,13 @@ export class ConfirmPurchaseComponent {
     if(!this.selectedAddressId || !this.selectedPaymentMethodId || !this.cart?.id)
       return;
 
-    this.orderService.Buy({
+    this.orderService.Purchase({
       addressId: this.selectedAddressId,
       cartId: this.cart?.id,
       paymentMethodId: this.selectedPaymentMethodId
-    }).subscribe(res => {
-      if(res) //TODO: Use modal
-        alert("Compra correcta")
+    }).subscribe(orderId => {
+      if(orderId) //TODO: Use modal
+        this.router.navigate(['/', 'orders', orderId])
     })
   }
 
