@@ -1,0 +1,80 @@
+@if (reorderPreview) {
+<main class="container mt-4">
+    <h2 class="mb-4">
+        <i class="bi bi-arrow-repeat me-2"></i>
+        Reorder Preview
+    </h2>
+
+    <app-address-selection
+      [addresses]="addresses"
+      (selectEvent)="selectAddress($event)"
+    />
+
+    <app-payment-method-selection
+      [paymentMethods]="paymentMethods"
+      (paymentEvent)="selectPaymentMethod($event)"
+    />
+
+    <section class="row">
+      <div class="col-lg-8">
+
+        @if (reorderPreview.items.length > 0) {
+          <section class="card shadow border-0 mb-4">
+            <div class="card-body p-4">
+              <h4 class="fw-bold mb-4">Products available</h4>
+
+              <div class="d-flex flex-column gap-3">
+                @for (item of reorderPreview.items; track item.id) {
+                  <app-order-detail-card [item]="item" />
+                }
+              </div>
+            </div>
+          </section>
+        } @else {
+          <section class="card shadow border-0 mb-4">
+            <div class="card-body p-4">
+              <h4 class="fw-bold mb-0">No products available</h4>
+            </div>
+          </section>
+        }
+
+        @if (reorderPreview.invalidItems.length > 0) {
+          <section class="card shadow border-0 mb-4">
+            <div class="card-body p-4">
+              <h4 class="fw-bold mb-4">Products not available</h4>
+
+              <div class="d-flex flex-column gap-3">
+                @for (item of reorderPreview.invalidItems; track item.id) {
+                   <app-product-minimal-card [product]="item" />
+                }
+              </div>
+            </div>
+          </section>
+        }
+      </div>
+
+      <aside class="col-lg-4">
+        <article class="card shadow-sm sticky-top" style="top: 1rem;">
+          <div class="card-body">
+            <h5 class="card-title mb-3">SUMMARY</h5>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span>Total</span>
+              <strong>${{ reorderPreview.total }}</strong>
+            </div>
+
+            <button
+              (click)="reorder()"
+              [disabled]="!selectedAddressId || !selectedPaymentMethodId"
+              class="btn btn-primary w-100 mt-3"
+            >
+              <i class="bi bi-credit-card me-2"></i>
+              Reorder
+            </button>
+          </div>
+        </article>
+      </aside>
+      
+    </section>
+</main>
+}

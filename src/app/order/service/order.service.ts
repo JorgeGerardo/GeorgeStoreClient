@@ -4,7 +4,9 @@ import { PagedResult } from '@core/Interfaces/paged-result';
 import { QueryParams } from '@core/Interfaces/queryparams';
 import { BaseService } from '@core/services/base.service';
 import { Order } from '@order/interfaces/order';
-import { catchError, of, switchMap } from 'rxjs';
+import { ReorderPreview } from '@order/interfaces/reorder-preview';
+import { ReorderRequest } from '@order/interfaces/reorder-request';
+import { catchError, of } from 'rxjs';
 
 
 @Injectable({
@@ -26,6 +28,14 @@ export class OrderService extends BaseService {
     );
   }
 
+  PreviewReorder(orderId: number){
+    return this.http.get<ReorderPreview>(`${this.API_URL}/order/reorder/${orderId}`);
+  }
+
+  Reorder(request: ReorderRequest){
+    return this.http.post<number>(`${this.API_URL}/order/reorder`, request).pipe(
+      catchError(() => of(-1))
+    );
+  }
 
 }
-

@@ -46,41 +46,7 @@
         <div class="d-flex flex-column gap-3">
 
           @for (item of order.details; track item.id) {
-
-            <article class="d-flex gap-3 align-items-center product-item">
-
-              <img [routerLink]="['product', item.id]"
-                [src]="item.image"
-                class="rounded shadow-sm"
-                style="width: 90px; height: 90px; object-fit: cover;"
-              />
-
-              <div class="flex-grow-1">
-
-                <p class="fw-semibold fs-5 mb-1">
-                  <a [routerLink]="['/', 'product', item.id]">
-                    {{ item.name }}
-                  </a>
-                </p>
-
-                <p class="text-muted mb-1">
-                  Quantity: {{ item.quantity }}
-                </p>
-
-                <p class="text-muted mb-0">
-                  Unit price: ${{ item.unitPrice }}
-                </p>
-
-              </div>
-
-              <div class="text-end">
-                <p class="fw-bold fs-5 mb-0">
-                  ${{ item.subTotal }}
-                </p>
-              </div>
-
-            </article>
-
+            <app-order-detail-card [item]="item"/>
           }
 
         </div>

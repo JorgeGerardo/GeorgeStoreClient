@@ -1,0 +1,16 @@
+.minimal-product {
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.minimal-product:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.minimal-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+}

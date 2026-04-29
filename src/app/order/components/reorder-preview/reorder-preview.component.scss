@@ -1,0 +1,9 @@
+.product-item {
+  padding: 12px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.product-item:hover {
+  background: #f8f9fa;
+}
