@@ -49,6 +49,48 @@
             <app-order-detail-card [item]="item"/>
           }
 
+          <!-- SHIPPING -->
+          <section class="mb-3">
+            <h6
+              class="fw-bold d-flex justify-content-between align-items-center"
+              data-bs-toggle="collapse"
+              data-bs-target="#shippingCollapse"
+              style="cursor: pointer;"
+            >
+              Shipping Info
+              <i class="bi bi-chevron-down"></i>
+            </h6>
+
+            <main id="shippingCollapse" class="collapse mt-2 small text-muted">
+              <div>{{ order.street }} #{{ order.externalNumber }}</div>
+              <div>{{ order.neighborhood }}, {{ order.city }}</div>
+              <div>{{ order.state }}, {{ order.postalCode }}</div>
+
+              @if (order.references) {
+                <div class="fst-italic">Ref: {{ order.references }}</div>
+              }
+            </main>
+          </section>
+
+          <!-- PAYMENT -->
+          <section>
+            <h6
+              class="fw-bold d-flex justify-content-between align-items-center"
+              data-bs-toggle="collapse"
+              data-bs-target="#paymentCollapse"
+              style="cursor: pointer;"
+            >
+              Payment Info
+              <i class="bi bi-chevron-down"></i>
+            </h6>
+
+            <main id="paymentCollapse" class="collapse mt-2 small text-muted">
+              <div class="fw-semibold">{{ order.cardHolderName }}</div>
+              <div>**** **** **** {{ order.last4 }}</div>
+              <div>{{ order.brand }}</div>
+            </main>
+          </section>
+
         </div>
 
       </div>
