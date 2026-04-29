@@ -13,7 +13,7 @@
       </div>
     }
 
-    <div id="addressCollapse" class="collapse" [class.show]="isAddressOpen">
+    <header id="addressCollapse" class="collapse" [class.show]="isAddressOpen">
         <div class="row mb-3">
             @for (address of addresses(); track address.id) {
             <div class="col-12 mb-2">
@@ -31,5 +31,22 @@
             </div>
             }
         </div>
-    </div>
+
+        @if (addresses().length == 0) {
+            <section class="text-center my-3">
+                <p class="text-muted small mb-2">
+                    You don’t have any saved addresses
+                </p>
+
+                <button [routerLink]="['/','profile', 'address', 'create']"
+                    class="btn btn-outline-primary d-flex align-items-center gap-2 mx-auto" >
+                    <i class="bi bi-geo-alt"></i>
+                    Add new address
+                </button>
+
+            </section>
+        }
+
+    </header>
+
 </main>

@@ -32,5 +32,24 @@
               </div>
             }
         </section>
+
+        @if (paymentMethods().length == 0) {
+            <section class="text-center my-3">
+                <p class="text-muted small mb-2">
+                    You don’t have any saved payment method
+                </p>
+    
+                <button [routerLink]="['/','profile', 'payment-methods', 'create']"
+                    class="btn btn-outline-primary d-flex align-items-center gap-2 mx-auto" >
+                    <i class="bi bi-credit-card"></i>
+                    Add new payment method
+                </button>
+    
+            </section>
+        }
+
     </header>
+
+
+
 </main>

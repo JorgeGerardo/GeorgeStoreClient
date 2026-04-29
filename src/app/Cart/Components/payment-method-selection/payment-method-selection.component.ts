@@ -1,9 +1,10 @@
 import { Component, input, OnInit, output } from '@angular/core';
 import { PaymentMethod } from '@profile/interfaces/payment-method';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-payment-method-selection',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './payment-method-selection.component.html',
   styleUrl: './payment-method-selection.component.scss'
 })

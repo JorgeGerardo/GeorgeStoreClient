@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
 import { Address } from '@profile/interfaces/address';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-address-selection',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './address-selection.component.html',
   styleUrl: './address-selection.component.scss'
 })
