@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ReorderPreview } from '@order/interfaces/reorder-preview';
 import { OrderService } from '@order/service/order.service';
 import { OrderDetailCardComponent } from "@order/components/order-detail-card/order-detail-card.component";
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddressService } from '@profile/services/address.service';
 import { PaymentMethodService } from '@profile/services/payment-method.service';
 import { PaymentMethod } from '@profile/interfaces/payment-method';
@@ -11,6 +11,7 @@ import { AddressSelectionComponent } from "@cart/components/address-selection/ad
 import { PaymentMethodSelectionComponent } from "@cart/components/payment-method-selection/payment-method-selection.component";
 import { ProductMinimalCardComponent } from "@order/components/product-minimal-card/product-minimal-card.component";
 import { ReorderRequest } from '@order/interfaces/reorder-request';
+import { switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-reorder-preview',
@@ -23,6 +24,7 @@ export class ReorderPreviewComponent implements OnInit {
   orderService = inject(OrderService);
   addressService = inject(AddressService);
   paymentMethodService = inject(PaymentMethodService);
+  activeRoute = inject(ActivatedRoute);
 
   selectedAddressId: number | null = null;
   selectedPaymentMethodId: number | null = null;
@@ -32,7 +34,7 @@ export class ReorderPreviewComponent implements OnInit {
   paymentMethods: PaymentMethod[] = [];
 
   ngOnInit() {
-    this.loadPreview();
+    this.loadOrderPreview();
     this.loadAddresses();
     this.loadPaymentMethods();
   }
@@ -62,9 +64,12 @@ export class ReorderPreviewComponent implements OnInit {
     this.router.navigate(['/', 'orders']);
   }
 
-
-  private loadPreview() {
-    this.orderService.PreviewReorder(1).subscribe(v => this.reorderPreview = v);
+  private loadOrderPreview() {
+    this.activeRoute.params.pipe(
+      switchMap((params) => this.orderService.PreviewReorder(params['id'])),
+      tap((prev) => this.reorderPreview = prev)
+    )
+    .subscribe();
   }
 
   private loadPaymentMethods() {
