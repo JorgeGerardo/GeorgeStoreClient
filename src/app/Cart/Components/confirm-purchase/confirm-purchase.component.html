@@ -7,12 +7,12 @@
     </h2>
 
     <app-address-selection 
-        (selectEvent)="selectAddress($event)" 
+        (selectedEvent)="selectAddress($event)" 
         [addresses]="this.addresses" 
     />
 
     <app-payment-method-selection 
-        (paymentEvent)="selectPaymentMethod($event)" 
+        (selectedEvent)="selectPaymentMethod($event)" 
         [paymentMethods]="this.paymentMethods"
     />
 

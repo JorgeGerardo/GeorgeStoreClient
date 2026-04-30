@@ -9,10 +9,10 @@ import { RouterLink } from "@angular/router";
   styleUrl: './payment-method-selection.component.scss'
 })
 export class PaymentMethodSelectionComponent implements OnInit {
-  selectedPaymentMethodId: number | null = null;
+  selectedValue: number | null = null;
   paymentMethods = input.required<PaymentMethod[]>();
-  paymentEvent = output<number>();
-  isPaymentOpen = true;
+  selectedEvent = output<number>();
+  isMenuOpen = true;
 
 
   ngOnInit() {
@@ -20,19 +20,19 @@ export class PaymentMethodSelectionComponent implements OnInit {
     if(!defaultPaymentMethod) 
       return;
 
-    this.paymentEvent.emit(defaultPaymentMethod.id);
-    this.selectedPaymentMethodId = defaultPaymentMethod.id;
-    this.isPaymentOpen = false;
+    this.selectedEvent.emit(defaultPaymentMethod.id);
+    this.selectedValue = defaultPaymentMethod.id;
+    this.isMenuOpen = false;
   }
 
   selectPaymentMethod(id: number) {
-    this.selectedPaymentMethodId = id;
-    this.isPaymentOpen = false;
-    this.paymentEvent.emit(id);
+    this.selectedValue = id;
+    this.isMenuOpen = false;
+    this.selectedEvent.emit(id);
   }
 
   get selectedPaymentMethod() {
-    return this.paymentMethods().find(a => a.id === this.selectedPaymentMethodId);
+    return this.paymentMethods().find(a => a.id === this.selectedValue);
   }
 
 }

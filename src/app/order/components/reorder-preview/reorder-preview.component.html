@@ -7,12 +7,12 @@
 
     <app-address-selection
       [addresses]="addresses"
-      (selectEvent)="selectAddress($event)"
+      (selectedEvent)="selectAddress($event)"
     />
 
     <app-payment-method-selection
       [paymentMethods]="paymentMethods"
-      (paymentEvent)="selectPaymentMethod($event)"
+      (selectedEvent)="selectPaymentMethod($event)"
     />
 
     <section class="row">

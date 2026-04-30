@@ -1,12 +1,12 @@
 <main>
     <h6 class="fw-bold mb-2 d-flex justify-content-between align-items-center"
-        (click)="isPaymentOpen = !isPaymentOpen"
+        (click)="isMenuOpen = !isMenuOpen"
         style="cursor: pointer;">
         Payment Method
         <i class="bi bi-chevron-down"></i>
     </h6>
 
-    @if (selectedPaymentMethodId) {
+    @if (selectedValue) {
       <div class="small text-muted mb-2">
           Selected:
           {{ selectedPaymentMethod?.brand }}
@@ -15,13 +15,13 @@
     }
 
 
-    <header class="collapse" [class.show]="isPaymentOpen">
+    <header class="collapse" [class.show]="isMenuOpen">
         <section class="row mb-3">
             @for (pm of paymentMethods(); track pm.id) {
               <div class="col-12 mb-2">
                   <main
                   class="selectable-item"
-                  [class.selected]="selectedPaymentMethodId === pm.id"
+                  [class.selected]="this.selectedValue"
                   (click)="selectPaymentMethod(pm.id)"
                   >
                       <div class="fw-semibold">{{ pm.cardHolderName }}</div>
