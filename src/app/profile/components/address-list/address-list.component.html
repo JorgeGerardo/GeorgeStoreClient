@@ -2,7 +2,7 @@
     @if (addresses.length > 0) {
       <section class="row g-3">
         @for (address of addresses; track address.id) {
-          <app-address [address]="address" (deletedEvent)="remove($event)"/>
+          <app-address [address]="address" (setDefaultEvent)="setAsDefault($event)" (deletedEvent)="remove($event)"/>
         }
       </section>
     }

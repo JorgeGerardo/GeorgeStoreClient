@@ -14,7 +14,15 @@ export class AddressListComponent implements OnInit {
   addressService = inject(AddressService);
   addresses: Address[] = [];
 
-  ngOnInit() {
+  ngOnInit() { this.loadAddress(); }
+
+  setAsDefault(addressId: number) {
+    this.addressService.SetAsDefault(addressId).subscribe((res) => {
+      if (res) this.loadAddress();
+    });
+  }
+
+  loadAddress() {
     this.addressService.Get().subscribe((res) => (this.addresses = res));
   }
 

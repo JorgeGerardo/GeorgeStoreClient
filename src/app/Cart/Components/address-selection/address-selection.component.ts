@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, OnInit, output } from '@angular/core';
 import { Address } from '@profile/interfaces/address';
 import { RouterLink } from "@angular/router";
 
@@ -8,11 +8,21 @@ import { RouterLink } from "@angular/router";
   templateUrl: './address-selection.component.html',
   styleUrl: './address-selection.component.scss'
 })
-export class AddressSelectionComponent {
+export class AddressSelectionComponent implements OnInit {
   selectedAddressId: number | null = null;
   addresses = input.required<Address[]>();
   selectEvent = output<number>();
   isAddressOpen = true;
+
+  ngOnInit() {
+    let defaultAddress = this.addresses().find(a => a.isDefault)
+    if(!defaultAddress)
+      return;
+
+    this.selectEvent.emit(defaultAddress.id);
+    this.selectedAddressId = defaultAddress.id;
+    this.isAddressOpen = false;
+  }
 
   selectPaymentMethod(id: number) {
     this.selectedAddressId = id;

@@ -1,6 +1,5 @@
 <main class="col-12">
-  <section class="card shadow-sm position-relative h-100">
-
+  <section class="card shadow-sm position-relative h-100" [class.default-address]="address().isDefault">
     <button 
     type="button"
     class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 border-0 bg-transparent"
@@ -13,6 +12,13 @@
     <h6 class="card-title fw-bold mb-2">
         {{ address().alias }}
     </h6>
+
+    @if (address().isDefault) {
+        <span class="badge bg-success position-absolute top-0 start-0 m-2">
+            Default
+        </span>
+    }
+
 
     <p class="mb-1 small text-muted">
         {{ address().street }} #{{ address().externalNumber }}
@@ -28,6 +34,19 @@
     <p class="mb-0 small text-muted">
         {{ address().city }}, {{ address().state }}
     </p>
+
+    @if (!address().isDefault) {
+    <section class="mt-3">
+        <button
+            class="btn btn-outline-success btn-sm w-100 d-flex align-items-center justify-content-center gap-2"
+            (click)="setDefaultEvent.emit(address().id)"
+        >
+        <i class="bi bi-check-circle"></i>
+            Set as default
+        </button>
+    </section>
+    }
+
 
     </div>
   </section>

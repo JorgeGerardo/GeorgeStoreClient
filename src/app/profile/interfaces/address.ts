@@ -10,6 +10,7 @@ export interface Address {
     externalNumber: string;
     internalNumber: string;
     references: string;
+    isDefault: boolean;
 }
 
 export type AddressCreateDto = Omit<Address, 'id'>;

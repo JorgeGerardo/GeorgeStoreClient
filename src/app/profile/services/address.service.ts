@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Address, AddressCreateDto } from '@profile/interfaces/address';
-import { catchError, map, of } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { NoSpinner } from '@core/Interceptors/http.context';
 import { BaseService } from '@core/services/base.service';
 
@@ -21,7 +21,14 @@ export class AddressService extends BaseService {
   }
 
   public Delete(addressId: number){
-    return this.http.delete(`${this.API_URL}/address/${addressId}`, { context: NoSpinner() })
+    return this.http.delete(`${this.API_URL}/address/${addressId}`)
+  }
+
+  public SetAsDefault(addressId: number){
+    return this.http.put(`${this.API_URL}/address/${addressId}`, {}).pipe(
+      switchMap(() => of(true)),
+      catchError(() => of(false)),
+    )
   }
 
 }

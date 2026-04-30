@@ -56,6 +56,19 @@
           <textarea class="form-control" rows="3" formControlName="references" placeholder="e.g. Blue house, black gate..."></textarea>
         </div>
 
+        <div class="form-check mb-3">
+            <input 
+              type="checkbox"
+              class="form-check-input"
+              id="isDefault"
+              formControlName="isDefault"
+            >
+            <label class="form-check-label" for="isDefault">
+              Set as default address
+            </label>
+        </div>
+
+
         <div class="d-grid">
           <button class="btn btn-primary" [disabled]="form.invalid">
             Save new address

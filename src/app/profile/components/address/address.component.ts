@@ -6,10 +6,12 @@ import { ProfileService } from '@profile/services/profile.service';
   selector: 'app-address',
   imports: [],
   templateUrl: './address.component.html',
+  styleUrl: './address.component.scss'
 })
 export class AddressComponent {
   address = input.required<Address>()
   deletedEvent = output<number>();
+  setDefaultEvent = output<number>();
 
   addressService = inject(ProfileService);
 

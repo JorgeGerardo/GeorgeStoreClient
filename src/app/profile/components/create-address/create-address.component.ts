@@ -24,6 +24,7 @@ export class CreateAddressComponent {
     externalNumber: [''],
     internalNumber: [''],
     references: [''],
+    isDefault: [false],
   });
 
   register() {
