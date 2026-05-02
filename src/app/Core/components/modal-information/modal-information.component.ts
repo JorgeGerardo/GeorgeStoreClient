@@ -5,9 +5,11 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-modal-information',
   imports: [],
   templateUrl: './modal-information.component.html',
+  styleUrl: 'modal-information.component.scss'
 })
 export class ModalInformationComponent {
   @Input() message = '';
+  @Input() title = '';
   @Input() type: 'error' | 'success' | 'info' = 'info';
 
   activeModal = inject(NgbActiveModal);

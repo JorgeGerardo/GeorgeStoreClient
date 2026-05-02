@@ -57,8 +57,8 @@ export class ReorderPreviewComponent implements OnInit {
       PaymentMethodId: this.selectedPaymentMethodId,
       OrderId: this.reorderPreview.orderId
     } as ReorderRequest).subscribe(res => {
-      if(res > 0)
-        this.router.navigate(['/', 'orders', res]);
+      if(res > 0) this.router.navigate(['/', 'orders', res]);
+      else this.router.navigate(['/', 'orders']);
     })
 
     this.router.navigate(['/', 'orders']);

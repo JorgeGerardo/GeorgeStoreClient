@@ -1,31 +1,34 @@
-<main class="modal-body text-center p-4">
+<main class="modal-body text-center p-4 modal-clean">
 
-  <!-- Icon -->
   <section class="mb-3">
     @switch (type) {
       @case ('error') {
-        <div class="icon-circle bg-danger-subtle text-danger">
+        <div class="icon-circle icon-error">
           <i class="bi bi-x-lg"></i>
         </div>
       }
       @case ('success') {
-        <div class="icon-circle bg-success-subtle text-success">
+        <div class="icon-circle icon-success">
           <i class="bi bi-check-lg"></i>
         </div>
       }
       @case ('info') {
-        <div class="icon-circle bg-primary-subtle text-primary">
+        <div class="icon-circle icon-info">
           <i class="bi bi-info-lg"></i>
         </div>
       }
     }
   </section>
 
-  <p class="mb-4 fs-5 fw-semibold text-dark">
+  <h5 class="fw-bold mb-2 text-dark">
+    {{ title }}
+  </h5>
+
+  <p class="mb-4 fs-6 text-muted">
     {{ message }}
   </p>
 
-  <button class="btn btn-primary px-4 rounded-pill" (click)="close()">
+  <button class="btn btn-primary px-4 rounded-pill btn-modern" (click)="close()">
     Accept
   </button>
 

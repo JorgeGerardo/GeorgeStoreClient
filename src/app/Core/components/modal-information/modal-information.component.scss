@@ -1,0 +1,41 @@
+.modal-clean {
+  border: none;
+}
+
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.icon-error {
+  background: #fdecea;
+  color: #dc3545;
+}
+
+.icon-success {
+  background: #eafaf1;
+  color: #198754;
+}
+
+.icon-info {
+  background: #e7f1ff;
+  color: #0d6efd;
+}
+
+.btn-modern {
+  min-width: 140px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-modern:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(13,110,253,0.2);
+}

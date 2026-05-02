@@ -47,7 +47,7 @@ export class ConfirmPurchaseComponent {
       cartId: this.cart?.id,
       paymentMethodId: this.selectedPaymentMethodId
     }).subscribe(orderId => {
-      if(orderId) //TODO: Use modal
+      if(orderId)
         this.router.navigate(['/', 'orders', orderId])
     })
   }

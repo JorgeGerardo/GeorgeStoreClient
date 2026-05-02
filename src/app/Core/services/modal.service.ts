@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ModalInformationComponent } from '@core/components/modal-information/modal-information.component';
+import { ApiError } from '@core/Interfaces/api-error';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
@@ -8,13 +9,14 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalService {
   private modal = inject(NgbModal);
 
-  error(message: string) {
+  error(error: ApiError) {
     const ref = this.modal.open(ModalInformationComponent, {
       centered: true,
       backdrop: 'static',
     });
 
-    ref.componentInstance.message = message;
+    ref.componentInstance.message = error.detail ?? "Please, try again";
+    ref.componentInstance.title = error.title ?? "Has ocurred an error";
     ref.componentInstance.type = 'error';
 
     return ref;

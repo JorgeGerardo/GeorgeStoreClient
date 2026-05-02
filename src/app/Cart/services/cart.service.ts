@@ -5,6 +5,9 @@ import { CartAddDto } from '@cart/interfaces/cart.add.dto';
 import { BaseService } from '@core/services/base.service';
 import { catchError, of, switchMap, tap } from 'rxjs';
 import { TokenService } from '@auth/services/token.service';
+import { ModalService } from '@core/services/modal.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiError } from '@core/Interfaces/api-error';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +15,8 @@ import { TokenService } from '@auth/services/token.service';
 export class CartService extends BaseService {
   private isLoged = inject(TokenService).isLogged;
   private _count = signal<number | undefined>(undefined);
+  private modalService = inject(ModalService);
+
   count = this._count.asReadonly();
 
   constructor() {
@@ -44,7 +49,10 @@ export class CartService extends BaseService {
     return this.http.put(`${this.API_URL}/cart`, { productId: itemId }).pipe(
       tap(() => this.updateCount()),
       switchMap(() => of(true)),
-      catchError(() => of(false)),
+      catchError((error:HttpErrorResponse) => {
+        this.modalService.error(error.error as ApiError)
+        return of(false);
+      }),
     );
   }
 
@@ -52,7 +60,10 @@ export class CartService extends BaseService {
     return this.http.delete(`${this.API_URL}/cart/${productId}`).pipe(
       tap(() => this.updateCount()),
       switchMap(() => of(true)),
-      catchError(() => of(false)),
+      catchError((error:HttpErrorResponse) => {
+        this.modalService.error(error.error as ApiError)
+        return of(false);
+      }),
     );
   }
 
