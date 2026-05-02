@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '@auth/services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import LoginRequest from '@auth/interfaces/LoginRequest';
 
 
@@ -14,6 +14,7 @@ import LoginRequest from '@auth/interfaces/LoginRequest';
 })
 export class LoginComponent {
   fb = inject(FormBuilder);
+  route = inject(ActivatedRoute);
   authSrv = inject(AuthService);
   router = inject(Router);
 
@@ -31,12 +32,13 @@ export class LoginComponent {
     }
 
     this.authSrv.login(this.form.value as LoginRequest).subscribe(result => {
-      if(result)
-        this.router.navigate(['/', 'home'])
+      if(result){
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigateByUrl(returnUrl)
+      }
     });
 
 
   }
-
 
 }

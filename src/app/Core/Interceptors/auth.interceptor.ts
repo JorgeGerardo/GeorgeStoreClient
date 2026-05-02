@@ -8,22 +8,21 @@ import { SKIP_AUTH } from '@core/Interceptors/http.context';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(TokenService)
   const router = inject(Router)
-  const token = authService.recover();;
-
-  if(!token)
-    return next(req);
 
   if(req.context.get(SKIP_AUTH))
     return next(req);
 
-  let clone = req.clone({
-    setHeaders: { Authorization: `Bearer ${token}`}
-  })
-  return next(clone).pipe(
+  const token = authService.recover();
+
+  let authReq = token
+    ? req.clone({ setHeaders: { Authorization: `Bearer ${token}`} })
+    : req;
+  
+  return next(authReq).pipe(
     catchError((err:HttpErrorResponse) => {
       if(err.status === 401){
         authService.logout();
-        router.navigate(['/', 'home'])
+        router.navigate(['/', 'auth', 'login'])
       }
 
       return throwError(() => err);
