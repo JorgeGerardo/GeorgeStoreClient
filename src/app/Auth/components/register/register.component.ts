@@ -5,6 +5,8 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '@auth/services/auth.service';
 import { RegisterRequest } from '@auth/interfaces/register.request';
 import { passwordMatchValidator } from '@core/validators/confirm.password';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +16,7 @@ import { passwordMatchValidator } from '@core/validators/confirm.password';
 export class RegisterComponent {
   fb = inject(FormBuilder);
   authSrv = inject(AuthService);
+  router = inject(Router);
   error: string | null = null;
 
   form = this.fb.nonNullable.group({
@@ -31,6 +34,8 @@ export class RegisterComponent {
       return;
     }
     
-    this.authSrv.register(this.form.value as RegisterRequest).subscribe();
+    this.authSrv.register(this.form.value as RegisterRequest).pipe(
+      tap(() => this.router.navigate(['/']))
+    ).subscribe();
   }
 }
