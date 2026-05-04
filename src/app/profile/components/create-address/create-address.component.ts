@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddressCreateDto } from '@profile/interfaces/address';
 import { AddressService } from '@profile/services/address.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-create-address',
@@ -13,6 +14,7 @@ export class CreateAddressComponent {
   addressService = inject(AddressService);
   fb = inject(FormBuilder);
   router = inject(Router);
+  route = inject(ActivatedRoute);
 
   form = this.fb.nonNullable.group({
     alias: ['', [Validators.required]],
@@ -29,9 +31,16 @@ export class CreateAddressComponent {
 
   register() {
     this.addressService
-      .Add(this.form.value as AddressCreateDto)
-      .subscribe((v) => {
-        if (v) this.router.navigate(['profile', 'address']);
-      });
+      .Add(this.form.value as AddressCreateDto).pipe(
+        tap(() => this.handleNavigation())
+      ).subscribe();
   }
+
+  private handleNavigation() {
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'];
+    this.router.navigateByUrl(
+      returnUrl ?? '/profile/address'
+    );
+  }
+
 }

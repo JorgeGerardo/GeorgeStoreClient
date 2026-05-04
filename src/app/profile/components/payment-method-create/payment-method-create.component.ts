@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentMethodCreateDto } from '@profile/interfaces/payment-method-create-dto';
 import { PaymentMethodService } from '@profile/services/payment-method.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-payment-method-create',
@@ -12,6 +13,7 @@ import { PaymentMethodService } from '@profile/services/payment-method.service';
 })
 export class PaymentMethodCreateComponent {
   service = inject(PaymentMethodService);
+  route = inject(ActivatedRoute);
   fb = inject(FormBuilder);
   router = inject(Router);
 
@@ -25,9 +27,15 @@ export class PaymentMethodCreateComponent {
   });
 
   save() {
-    this.service.Add(this.form.value as PaymentMethodCreateDto)
-      .subscribe(v => {
-        if (v) this.router.navigate(['profile', 'payment-methods']);
-      });
+    this.service.Add(this.form.value as PaymentMethodCreateDto).pipe(
+      tap(() => this.handleNavigation())
+    ).subscribe();
+  }
+
+  private handleNavigation() {
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'];
+    this.router.navigateByUrl(
+      returnUrl ?? '/profile/payment-methods'
+    );
   }
 }

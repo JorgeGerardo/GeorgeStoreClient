@@ -38,7 +38,7 @@
                     You don’t have any saved addresses
                 </p>
 
-                <button [routerLink]="['/','profile', 'address', 'create']"
+                <button (click)="goToCreate()"
                     class="btn btn-outline-primary d-flex align-items-center gap-2 mx-auto" >
                     <i class="bi bi-geo-alt"></i>
                     Add new address

@@ -39,7 +39,7 @@
                     You don’t have any saved payment method
                 </p>
     
-                <button [routerLink]="['/','profile', 'payment-methods', 'create']"
+                <button (click)="goToCreate()"
                     class="btn btn-outline-primary d-flex align-items-center gap-2 mx-auto" >
                     <i class="bi bi-credit-card"></i>
                     Add new payment method
