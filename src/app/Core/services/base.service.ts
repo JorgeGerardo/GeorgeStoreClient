@@ -3,6 +3,6 @@ import { environment } from "../../../environments/environment";
 import { inject } from "@angular/core";
 
 export abstract class BaseService {
-  API_URL = environment.apiUrl;
-  http = inject(HttpClient);
+  protected API_URL = environment.apiUrl;
+  protected http = inject(HttpClient);
 }

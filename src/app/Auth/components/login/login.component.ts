@@ -3,13 +3,13 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '@auth/services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import LoginRequest from '@auth/interfaces/LoginRequest';
 
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, NgbAlertModule],
+  imports: [CommonModule, ReactiveFormsModule, NgbAlertModule, RouterLink],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
