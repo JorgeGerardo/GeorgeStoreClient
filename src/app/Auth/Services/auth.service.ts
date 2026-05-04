@@ -21,7 +21,7 @@ export class AuthService extends BaseService {
   private router = inject(Router);
 
   public login(request: LoginRequest) {
-    return this.http.post<LoginResponse>(`${this.API_URL}/User/login`, request).pipe(
+    return this.http.post<LoginResponse>(`${this.API_URL}/Auth/login`, request).pipe(
       map((response) => {
         this.tokenService.save(response);
         return true;
@@ -34,11 +34,11 @@ export class AuthService extends BaseService {
   }
 
   public register(request: RegisterRequest) {
-    return this.http.post(`${this.API_URL}/User/register`, request);
+    return this.http.post(`${this.API_URL}/Auth/register`, request);
   }
 
   public refresh(refreshToken: string){
-    return this.http.post<LoginResponse>(`${this.API_URL}/User/refresh`, {refreshToken}, {context: NoAuth()});
+    return this.http.post<LoginResponse>(`${this.API_URL}/Auth/refresh`, {refreshToken}, {context: NoAuth()});
   }
 
   public logout(){
@@ -48,17 +48,17 @@ export class AuthService extends BaseService {
       return of();
     }
 
-    return this.http.post(`${this.API_URL}/User/logout`, {refreshToken}, {context: NoAuth()}).pipe(
+    return this.http.post(`${this.API_URL}/Auth/logout`, {refreshToken}, {context: NoAuth()}).pipe(
       finalize(() => this.tokenService.removeCookies())
     )
   }
 
   public forgotPassword(email: string){
-    return this.http.post(`${this.API_URL}/PasswordReset`, {email}, {context: NoAuth()});
+    return this.http.post(`${this.API_URL}/password-recovery`, {email}, {context: NoAuth()});
   }
 
   public resetPassword(request: ResetPassowordRequest){
-    return this.http.post(`${this.API_URL}/PasswordReset/recover`, request, {context: NoAuth()}).pipe(
+    return this.http.post(`${this.API_URL}/password-recovery/recover`, request, {context: NoAuth()}).pipe(
       tap(() => {
         this.modalService.success("Password has been reseted, try login again")
         this.router.navigate(['/', 'auth', 'login'])
