@@ -19,11 +19,11 @@ import { OrderService } from '@order/service/order.service';
   styleUrl: './confirm-purchase.component.scss'
 })
 export class ConfirmPurchaseComponent {
-  router = inject(Router);
-  cartService = inject(CartService);
-  paymentMethodService = inject(PaymentMethodService);
-  addressService = inject(AddressService);
-  orderService = inject(OrderService);
+  private router = inject(Router);
+  private cartService = inject(CartService);
+  private paymentMethodService = inject(PaymentMethodService);
+  private addressService = inject(AddressService);
+  private orderService = inject(OrderService);
   
   selectedAddressId: number | null = null;
   selectedPaymentMethodId: number | null = null;

@@ -12,10 +12,10 @@ import { CartAddDto } from '@cart/interfaces/cart.add.dto';
   templateUrl: './product-view.component.html',
 })
 export class ProductViewComponent implements OnInit {
-  route = inject(ActivatedRoute);
-  productService = inject(ProductService);
-  cartService = inject(CartService);
-  localtion = inject(Location);
+  private route = inject(ActivatedRoute);
+  private productService = inject(ProductService);
+  private cartService = inject(CartService);
+  private localtion = inject(Location);
   product: Product | null | undefined = undefined;
 
   ngOnInit() {

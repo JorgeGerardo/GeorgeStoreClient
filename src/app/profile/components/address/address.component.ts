@@ -9,11 +9,11 @@ import { ProfileService } from '@profile/services/profile.service';
   styleUrl: './address.component.scss'
 })
 export class AddressComponent {
+  private addressService = inject(ProfileService);
+  
   address = input.required<Address>()
   deletedEvent = output<number>();
   setDefaultEvent = output<number>();
-
-  addressService = inject(ProfileService);
 
   delete(addressId: number){
     this.deletedEvent.emit(addressId);

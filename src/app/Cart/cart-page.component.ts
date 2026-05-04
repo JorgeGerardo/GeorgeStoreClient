@@ -9,6 +9,4 @@ import { CartDetailComponent } from '@cart/components/cart-detail/cart-detail.co
     <app-cart-detail/>
   `,
 })
-export class CartPageComponent {
-
-}
+export class CartPageComponent {}

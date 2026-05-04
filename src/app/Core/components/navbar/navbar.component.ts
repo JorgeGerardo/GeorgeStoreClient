@@ -12,12 +12,12 @@ import { AuthService } from '@auth/services/auth.service';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  isMenuOpen = false;
-  tokenService = inject(TokenService);
-  authService = inject(AuthService);
-  cartService = inject(CartService);
+  private tokenService = inject(TokenService);
+  private authService = inject(AuthService);
+  private cartService = inject(CartService);
   isLogged = this.tokenService.isLogged;
   itemsCount = this.cartService.count;
+  isMenuOpen = false;
 
   toggle() {
     this.isMenuOpen = !this.isMenuOpen;

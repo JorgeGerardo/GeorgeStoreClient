@@ -12,10 +12,10 @@ import { tap } from 'rxjs';
   styles: ``
 })
 export class PaymentMethodCreateComponent {
-  service = inject(PaymentMethodService);
-  route = inject(ActivatedRoute);
-  fb = inject(FormBuilder);
-  router = inject(Router);
+  private service = inject(PaymentMethodService);
+  private route = inject(ActivatedRoute);
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
 
   form = this.fb.nonNullable.group({
     cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],

@@ -20,11 +20,11 @@ import { switchMap, tap } from 'rxjs';
   styleUrl: './reorder-preview.component.scss'
 })
 export class ReorderPreviewComponent implements OnInit {
-  router = inject(Router);
-  orderService = inject(OrderService);
-  addressService = inject(AddressService);
-  paymentMethodService = inject(PaymentMethodService);
-  activeRoute = inject(ActivatedRoute);
+  private router = inject(Router);
+  private orderService = inject(OrderService);
+  private addressService = inject(AddressService);
+  private paymentMethodService = inject(PaymentMethodService);
+  private activeRoute = inject(ActivatedRoute);
 
   selectedAddressId: number | null = null;
   selectedPaymentMethodId: number | null = null;

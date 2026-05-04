@@ -14,9 +14,9 @@ import { tap } from 'rxjs';
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
-  fb = inject(FormBuilder);
-  authSrv = inject(AuthService);
-  router = inject(Router);
+  private fb = inject(FormBuilder);
+  private authSrv = inject(AuthService);
+  private router = inject(Router);
   error: string | null = null;
 
   form = this.fb.nonNullable.group({

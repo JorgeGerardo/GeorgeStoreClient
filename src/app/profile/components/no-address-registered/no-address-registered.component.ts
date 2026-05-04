@@ -23,6 +23,4 @@ import { RouterLink } from "@angular/router";
   </section>
   `,
 })
-export class NoAddressRegisteredComponent {
-
-}
+export class NoAddressRegisteredComponent { }

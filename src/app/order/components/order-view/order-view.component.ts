@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Order } from '@order/interfaces/order';
 import { OrderStatus } from '@order/interfaces/order-status';
 import { OrderService } from '@order/service/order.service';
-import { OrderDetailCardComponent } from "../order-detail-card/order-detail-card.component";
+import { OrderDetailCardComponent } from "@order/components/order-detail-card/order-detail-card.component";
 
 @Component({
   selector: 'app-order-view',
@@ -13,8 +13,8 @@ import { OrderDetailCardComponent } from "../order-detail-card/order-detail-card
   styleUrl: `./order-view.component.css`,
 })
 export class OrderViewComponent {
-  activeRoute = inject(ActivatedRoute);
-  orderService = inject(OrderService);
+  private activeRoute = inject(ActivatedRoute);
+  private orderService = inject(OrderService);
   order: Order | undefined = undefined;
   orderStatus = OrderStatus;
 

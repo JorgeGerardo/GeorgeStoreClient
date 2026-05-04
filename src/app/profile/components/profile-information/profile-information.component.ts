@@ -11,7 +11,7 @@ import { RouterLink } from "@angular/router";
   styleUrl: `./profile-information.component.css`
 })
 export class ProfileInformationComponent implements OnInit {
-  profileService = inject(ProfileService);
+  private profileService = inject(ProfileService);
   userData: UserData | undefined = undefined;
 
   ngOnInit() {

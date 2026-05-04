@@ -9,7 +9,7 @@ import { CartService } from '@cart/services/cart.service';
   templateUrl: './product-card.component.html',
 })
 export class ProductCardComponent {
-  cartService = inject(CartService);
+  private cartService = inject(CartService);
   product = input.required<Product>();
 
   addToCart(productId: number) {

@@ -13,10 +13,10 @@ import LoginRequest from '@auth/interfaces/LoginRequest';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  fb = inject(FormBuilder);
-  route = inject(ActivatedRoute);
-  authSrv = inject(AuthService);
-  router = inject(Router);
+  private fb = inject(FormBuilder);
+  private route = inject(ActivatedRoute);
+  private authSrv = inject(AuthService);
+  private router = inject(Router);
 
   error: string | null = null;
 

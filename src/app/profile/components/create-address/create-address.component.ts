@@ -11,10 +11,10 @@ import { tap } from 'rxjs';
   templateUrl: './create-address.component.html',
 })
 export class CreateAddressComponent {
-  addressService = inject(AddressService);
-  fb = inject(FormBuilder);
-  router = inject(Router);
-  route = inject(ActivatedRoute);
+  private addressService = inject(AddressService);
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   form = this.fb.nonNullable.group({
     alias: ['', [Validators.required]],

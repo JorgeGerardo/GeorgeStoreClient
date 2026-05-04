@@ -11,7 +11,7 @@ import { AddressService } from '@profile/services/address.service';
   templateUrl: './address-list.component.html',
 })
 export class AddressListComponent implements OnInit {
-  addressService = inject(AddressService);
+  private addressService = inject(AddressService);
   addresses: Address[] = [];
 
   ngOnInit() { this.loadAddress(); }

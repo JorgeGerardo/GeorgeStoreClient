@@ -12,7 +12,7 @@ export class ModalInformationComponent {
   @Input() title = '';
   @Input() type: 'error' | 'success' | 'info' = 'info';
 
-  activeModal = inject(NgbActiveModal);
+  private activeModal = inject(NgbActiveModal);
 
   close() {
     this.activeModal.close();

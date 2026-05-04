@@ -6,7 +6,6 @@ import { RouterLink } from "@angular/router";
   selector: 'app-cart-detail-summary',
   imports: [RouterLink],
   templateUrl: './cart-detail-summary.component.html',
-  styleUrl: './cart-detail-summary.component.scss'
 })
 export class CartDetailSummaryComponent {
   item = input.required<CartItem>();

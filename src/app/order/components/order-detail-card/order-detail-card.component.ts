@@ -6,7 +6,6 @@ import { RouterLink } from "@angular/router";
   selector: 'app-order-detail-card',
   imports: [RouterLink],
   templateUrl: './order-detail-card.component.html',
-  styleUrl: './order-detail-card.component.scss'
 })
 export class OrderDetailCardComponent {
   item = input.required<OrderDetail>();

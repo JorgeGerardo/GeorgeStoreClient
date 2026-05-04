@@ -15,9 +15,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   styleUrl: 'home-page.component.css'
 })
 export class HomePageComponent implements OnInit {
-  productService = inject(ProductService);
-  activeRoute = inject(ActivatedRoute);
-  router = inject(Router);
+  private productService = inject(ProductService);
+  private activeRoute = inject(ActivatedRoute);
+  private router = inject(Router);
   search = new FormControl('');
 
   paginationInf = {

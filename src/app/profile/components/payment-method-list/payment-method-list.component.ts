@@ -12,7 +12,7 @@ import { RouterLink } from "@angular/router";
   styles: ``,
 })
 export class PaymentMethodListComponent implements OnInit {
-  paymentMethodService = inject(PaymentMethodService);
+  private paymentMethodService = inject(PaymentMethodService);
   paymentMethods: PaymentMethod[] = [];
   
   ngOnInit() {

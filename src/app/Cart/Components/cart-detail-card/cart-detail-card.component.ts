@@ -5,7 +5,6 @@ import CartItem from '@cart/interfaces/cart.item';
   selector: 'app-cart-detail-card',
   imports: [],
   templateUrl: './cart-detail-card.component.html',
-  styleUrl: './cart-detail-card.component.scss'
 })
 export class CartDetailCardComponent {
   item = input.required<CartItem>();

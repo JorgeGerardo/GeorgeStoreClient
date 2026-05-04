@@ -13,9 +13,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './order-list.component.html',
 })
 export class OrderListComponent implements OnInit {
-  orderService = inject(OrderService);
-  router = inject(Router);
-  activeRoute = inject(ActivatedRoute);
+  private orderService = inject(OrderService);
+  private router = inject(Router);
+  private activeRoute = inject(ActivatedRoute);
   search = new FormControl('');
   paginationInf = {
     totalCount: 0,

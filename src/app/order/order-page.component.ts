@@ -9,6 +9,5 @@ import { RouterOutlet } from '@angular/router';
     <app-navbar />
     <router-outlet />
   `,
-  styles: ``,
 })
 export class OrderPageComponent {}

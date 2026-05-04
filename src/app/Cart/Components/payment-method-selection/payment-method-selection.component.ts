@@ -9,8 +9,8 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrl: './payment-method-selection.component.scss'
 })
 export class PaymentMethodSelectionComponent implements OnInit {
-  route = inject(ActivatedRoute);
-  router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   selectedValue: number | null = null;
   paymentMethods = input.required<PaymentMethod[]>();

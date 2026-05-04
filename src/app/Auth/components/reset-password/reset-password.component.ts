@@ -10,11 +10,11 @@ import { NgbAlert } from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './reset-password.component.html',
 })
 export class ResetPasswordComponent {
-  fb = inject(FormBuilder);
-  authService = inject(AuthService);
-  router = inject(Router);
-  route = inject(ActivatedRoute);
-  token = "";
+  private fb = inject(FormBuilder);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private token = "";
 
   error: string | null = null;
 

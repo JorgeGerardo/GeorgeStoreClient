@@ -10,7 +10,7 @@ import { RouterLink } from "@angular/router";
   templateUrl: './cart-detail.component.html',
 })
 export class CartDetailComponent implements OnInit {
-  cartService = inject(CartService);
+  private cartService = inject(CartService);
   cart: Cart | undefined = undefined;
 
   ngOnInit() {
