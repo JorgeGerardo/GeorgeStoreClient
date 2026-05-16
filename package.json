@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --base-href \"/GeorgeStoreClient/\"; copy dist\\george-store\\browser\\index.html dist\\george-store\\browser\\404.html"  
   },
   "private": true,
   "dependencies": {
