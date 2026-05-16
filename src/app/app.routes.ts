@@ -4,8 +4,8 @@ import { NotFoundComponent } from '@core/components/not-found/not-found.componen
 import { authGuard } from '@core/guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', component: HomePageComponent },
+  { path: '', pathMatch: 'full', redirectTo: '' },
+  { path: '', component: HomePageComponent },
   {
     path: 'auth',
     loadChildren: () => import('@auth/auth.routes'),
