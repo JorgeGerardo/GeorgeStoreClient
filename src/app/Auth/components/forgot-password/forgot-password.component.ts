@@ -1,7 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
+import { ApiError } from '@core/Interfaces/api-error';
 import { NgbAlert } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -34,8 +36,8 @@ export class ForgotPasswordComponent {
         this.form.reset();
         this.loading = false;
       },
-      error: () => {
-        this.error = 'Something went wrong. Try again.';
+      error: (err:HttpErrorResponse) => {
+        this.error = (err.error as ApiError).detail;
         this.loading = false;
       },
     });
