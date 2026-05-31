@@ -21,7 +21,7 @@
               <div class="col-12 mb-2">
                   <main
                   class="selectable-item"
-                  [class.selected]="this.selectedValue"
+                  [class.selected]="this.selectedValue === pm.id"
                   (click)="selectPaymentMethod(pm.id)"
                   >
                       <div class="fw-semibold">{{ pm.cardHolderName }}</div>

@@ -9,7 +9,8 @@ import { AuthService } from '@auth/services/auth.service';
 @Component({
   selector: 'app-navbar',
   imports: [CommonModule, RouterLink, NgbCollapseModule, RouterLinkActive],
-  templateUrl: './navbar.component.html'
+  templateUrl: './navbar.component.html',
+  styleUrl: 'navbar.component.scss'
 })
 export class NavbarComponent {
   private tokenService = inject(TokenService);
