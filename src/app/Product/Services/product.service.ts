@@ -15,7 +15,7 @@ export class ProductService extends BaseService {
   }
 
   public GetById(id: number | string){
-    return this.http.get<Product | null>(`${this.API_URL}/Product/${id}`); 
+    return this.http.get<Product | null>(`${this.API_URL}/Product/${id}`, {context: NoAuth()}); 
   }
 
 }

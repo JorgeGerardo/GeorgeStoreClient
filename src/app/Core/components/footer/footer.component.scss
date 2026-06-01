@@ -1,0 +1,116 @@
+.app-footer {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid #dee2e6;
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-warning {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #ffeaa7;
+    border: 1px solid #ffd700;
+    border-radius: 0.5rem;
+
+    .warning-icon {
+      width: 24px;
+      height: 24px;
+      color: #d39e00;
+      flex-shrink: 0;
+    }
+
+    .warning-text {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #664d00;
+
+      strong {
+        color: #d39e00;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .footer-link {
+      color: #0d6efd;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+
+      &:hover {
+        color: #0a58ca;
+        background-color: rgba(13, 110, 253, 0.08);
+        text-decoration: underline;
+      }
+
+      &:focus {
+        outline: 2px solid #0d6efd;
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  .footer-copyright {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+    font-size: 0.875rem;
+    color: #6c757d;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    padding: 1.5rem 0.75rem;
+    margin-top: 2rem;
+
+    .footer-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      .footer-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    .footer-warning {
+      flex-direction: column;
+      text-align: center;
+
+      .warning-icon {
+        width: 20px;
+        height: 20px;
+      }
+
+      .warning-text {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

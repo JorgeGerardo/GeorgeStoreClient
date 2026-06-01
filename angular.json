@@ -68,6 +68,17 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "staging": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -80,6 +91,9 @@
             },
             "development": {
               "buildTarget": "GeorgeStore:build:development"
+            },
+            "staging": {
+              "buildTarget": "GeorgeStore:build:staging"
             }
           },
           "defaultConfiguration": "development"
