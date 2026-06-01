@@ -16,7 +16,7 @@ export class AddressSelectionComponent implements OnInit {
   isMenuOpen = true;
 
   ngOnInit() {
-    let defaultAddress = this.addresses().find(a => a.isDefault)
+    const defaultAddress = this.addresses().find(a => a.isDefault)
     if(!defaultAddress)
       return;
 

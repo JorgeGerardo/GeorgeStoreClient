@@ -42,7 +42,7 @@ export class AuthService extends BaseService {
   }
 
   public logout(){
-    let refreshToken = this.tokenService.getRefreshToken();
+    const refreshToken = this.tokenService.getRefreshToken();
     if (!refreshToken) {
       this.tokenService.removeCookies();
       return of();

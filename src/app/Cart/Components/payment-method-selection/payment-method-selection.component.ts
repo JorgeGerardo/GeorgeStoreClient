@@ -19,7 +19,7 @@ export class PaymentMethodSelectionComponent implements OnInit {
 
 
   ngOnInit() {
-    let defaultPaymentMethod = this.paymentMethods().find(p => p.isDefault)
+    const defaultPaymentMethod = this.paymentMethods().find(p => p.isDefault)
     if(!defaultPaymentMethod) 
       return;
 

@@ -1,8 +1,15 @@
 .selectable-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+
   cursor: pointer;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   transition: all 0.15s ease;
+
+  border: none;
+  background: transparent;
 }
 
 .selectable-item:hover {
