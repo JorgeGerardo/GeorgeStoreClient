@@ -8,6 +8,7 @@ import { passwordMatchValidator } from '@core/validators/confirm.password';
 import { Router } from '@angular/router';
 import { catchError, tap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { EmailValidator } from '@core/validators/email-validator';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterComponent {
 
   form = this.fb.nonNullable.group({
     userName: ['', [Validators.required]],
-    email: ['', [Validators.email, Validators.required]],
+    email: ['', [EmailValidator, Validators.required]],
     password: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]],
   },
