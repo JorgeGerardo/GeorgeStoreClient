@@ -10,8 +10,9 @@
 
         <!-- Card number -->
         <div class="mb-3">
-          <label class="form-label required">Card Number</label>
+          <label for="cardNumber" class="form-label required">Card Number</label>
           <input
+            id="cardNumber"
             type="text"
             class="form-control"
             formControlName="cardNumber"
@@ -21,8 +22,8 @@
 
         <!-- Card holder -->
         <div class="mb-3">
-          <label class="form-label required">Card Holder Name</label>
-          <input
+          <label for="cardHolderName" class="form-label required">Card Holder Name</label>
+          <input id="cardHolderName"
             type="text"
             class="form-control"
             formControlName="cardHolderName"
@@ -32,8 +33,8 @@
 
         <!-- Brand -->
         <div class="mb-3">
-          <label class="form-label required">Card Brand</label>
-          <select class="form-select" formControlName="brand">
+          <label for="brand" class="form-label required">Card Brand</label>
+          <select id="brand" class="form-select" formControlName="brand">
             <option value="">Select brand</option>
             <option value="Visa">Visa</option>
             <option value="Mastercard">Mastercard</option>
@@ -44,8 +45,8 @@
         <!-- Expiration -->
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label class="form-label required">Exp Month</label>
-            <input
+            <label for="expMonth" class="form-label required">Exp Month</label>
+            <input id="expMonth"
               type="number"
               class="form-control"
               formControlName="expMonth"
@@ -54,8 +55,8 @@
           </div>
 
           <div class="col-md-6 mb-3">
-            <label class="form-label required">Exp Year</label>
-            <input
+            <label for="expYear" class="form-label required">Exp Year</label>
+            <input id="expYear"
               type="number"
               class="form-control"
               formControlName="expYear"
@@ -73,7 +74,7 @@
             id="defaultCheck"
           >
           <label class="form-check-label" for="defaultCheck">
-            Set as default payment method
+            Set as default
           </label>
         </div>
 

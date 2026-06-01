@@ -27,9 +27,9 @@ export class CartDetailComponent implements OnInit {
   }
 
   increase(itemId: number){
-    this.cartService.Add({productId: itemId, quantity: 1}).subscribe(v => {
+    this.cartService.Add({productId: itemId, quantity: 1}).subscribe(() => {
       if(!this.cart) return;
-      let item = this.cart.items.find(i => i.productId === itemId);
+      const item = this.cart.items.find(i => i.productId === itemId);
       if (item)
         item.quantity++;
       this.updateCartTotal();
@@ -39,7 +39,7 @@ export class CartDetailComponent implements OnInit {
   decrease(itemId: number){
     this.cartService.Decrease(itemId).subscribe(v => {
       if(!this.cart || !v) return;
-      let item = this.cart.items.find(i => i.productId === itemId);
+      const item = this.cart.items.find(i => i.productId === itemId);
       if (item)
         item.quantity--;
       this.updateCartTotal();

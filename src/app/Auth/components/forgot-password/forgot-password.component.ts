@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { ApiError } from '@core/Interfaces/api-error';
+import { EmailValidator } from '@core/validators/email-validator';
 import { NgbAlert } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -20,7 +21,7 @@ export class ForgotPasswordComponent {
   loading = false;
 
   form = this.fb.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, EmailValidator]],
   });
 
   send() {

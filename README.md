@@ -1,5 +1,12 @@
 # GeorgeStore Frontend
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Ver%20App-green?style=for-the-badge)](https://jorgegerardo.github.io/GeorgeStoreClient/)
+
+[![API Live](https://img.shields.io/badge/API-Live%20Service-orange?style=for-the-badge)](https://georgestore-gwemdwb0gnhhb0ha.canadacentral-01.azurewebsites.net/swagger/index.html)
+
+[![API Backend](https://img.shields.io/badge/API-Backend-blue?style=for-the-badge)](https://github.com/JorgeGerardo/GeorgeStoreAPI)
+
+
 Aplicación frontend para una plataforma E-Commerce Full Stack desarrollada con Angular.
 
 GeorgeStore permite a los usuarios explorar productos, administrar su carrito de compras, realizar pedidos, guardar direcciones y métodos de pago, además de gestionar la información de su cuenta mediante una interfaz moderna y responsiva.

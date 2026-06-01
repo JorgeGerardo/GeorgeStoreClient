@@ -8,52 +8,52 @@
       <form [formGroup]="form" (ngSubmit)="register()">
 
         <div class="mb-3">
-          <label class="form-label required">Alias</label>
-          <input type="text" class="form-control" formControlName="alias" placeholder="e.g. House, Work">
+          <label for="alias" class="form-label required">Alias</label>
+          <input type="text" class="form-control" id="alias" formControlName="alias" placeholder="e.g. House, Work">
         </div>
 
         <div class="mb-3">
-          <label class="form-label required">Street</label>
-          <input type="text" class="form-control" formControlName="street">
+          <label for="street" class="form-label required">Street</label>
+          <input type="text" class="form-control" id="street" formControlName="street">
         </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label class="form-label">Ext number</label>
-            <input type="text" class="form-control" formControlName="externalNumber">
+            <label for="externalNumber" class="form-label">Ext number</label>
+            <input type="text" class="form-control" id="externalNumber" formControlName="externalNumber">
           </div>
 
           <div class="col-md-6 mb-3">
-            <label class="form-label">Int number</label>
-            <input type="text" class="form-control" formControlName="internalNumber">
+            <label for="internalNumber" class="form-label">Int number</label>
+            <input type="text" class="form-control" id="internalNumber" formControlName="internalNumber">
           </div>
         </div>
 
         <div class="mb-3">
-          <label class="form-label required">Neighborhood</label>
-          <input type="text" class="form-control" formControlName="neighborhood">
+          <label for="neighborhood" class="form-label required">Neighborhood</label>
+          <input type="text" class="form-control" id="neighborhood" formControlName="neighborhood">
         </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label class="form-label required">City</label>
-            <input type="text" class="form-control" formControlName="city">
+            <label for="city" class="form-label required">City</label>
+            <input type="text" class="form-control" id="city" formControlName="city">
           </div>
 
           <div class="col-md-6 mb-3">
-            <label class="form-label required">State</label>
-            <input type="text" class="form-control" formControlName="state">
+            <label for="state" class="form-label required">State</label>
+            <input type="text" class="form-control" id="state" formControlName="state">
           </div>
         </div>
 
         <div class="mb-3">
-          <label class="form-label required">Postal Code</label>
-          <input type="text" class="form-control" formControlName="postalCode">
+          <label for="postalCode" class="form-label required">Postal Code</label>
+          <input type="text" class="form-control" id="postalCode" formControlName="postalCode">
         </div>
 
         <div class="mb-3">
-          <label class="form-label">References</label>
-          <textarea class="form-control" rows="3" formControlName="references" placeholder="e.g. Blue house, black gate..."></textarea>
+          <label for="references" class="form-label">References</label>
+          <textarea class="form-control" id="references" rows="3" formControlName="references" placeholder="e.g. Blue house, black gate..."></textarea>
         </div>
 
         <div class="form-check mb-3">
@@ -64,7 +64,7 @@
               formControlName="isDefault"
             >
             <label class="form-check-label" for="isDefault">
-              Set as default address
+              Set as default
             </label>
         </div>
 

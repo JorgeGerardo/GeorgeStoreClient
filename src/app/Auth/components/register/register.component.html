@@ -19,10 +19,11 @@
       <form [formGroup]="form" (ngSubmit)="register()">
         <!-- UserName -->
         <div class="mb-3">
-          <label class="form-label">Username</label>
+          <label for="userName" class="form-label">Username</label>
           <input
             type="text"
             class="form-control form-control-lg"
+            id="userName"
             formControlName="userName"
             placeholder="George01"
           />
@@ -41,10 +42,11 @@
 
         <!-- Email -->
         <div class="mb-3">
-          <label class="form-label">Email</label>
+          <label for="email" class="form-label">Email</label>
           <input
             type="email"
             class="form-control form-control-lg"
+            id="email"
             formControlName="email"
             placeholder="email@example.com"
           />
@@ -62,10 +64,11 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">Password</label>
+          <label for="password" class="form-label">Password</label>
           <input
             type="password"
             class="form-control form-control-lg"
+            id="password"
             formControlName="password"
             placeholder="********"
           />
@@ -77,11 +80,12 @@
 
 
         <div class="mb-3">
-          <label type="password"  class="form-label" >Confirm password</label>
+          <label for="confirmPassword" class="form-label">Confirm password</label>
 
           <input 
             type="password" 
             class="form-control form-control-lg" 
+            id="confirmPassword"
             formControlName="confirmPassword"
             placeholder="*********">
 

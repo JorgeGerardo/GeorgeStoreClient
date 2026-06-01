@@ -3,7 +3,7 @@ export interface PaymentMethod {
     userId: string;
     lastDigits: string;
     brand: string;
-    expMonth: Number;
+    expMonth: number;
     expYear: number;
     cardHolderName: string;
     isDefault: boolean;

@@ -44,7 +44,7 @@ export class ResetPasswordComponent {
       return;
     
     this.authService.resetPassword({
-      newPassowrd: this.form.get("password")?.value!,
+      newPassowrd: this.form.controls.password.value,
       token: this.token
     }).subscribe()
   }
