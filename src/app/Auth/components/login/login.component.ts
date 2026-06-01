@@ -5,6 +5,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '@auth/services/auth.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import LoginRequest from '@auth/interfaces/LoginRequest';
+import { EmailValidator } from '@core/validators/email-validator';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent {
   error: string | null = null;
 
   form = this.fb.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, EmailValidator]],
     password: ['', [Validators.required]],
   });
 
