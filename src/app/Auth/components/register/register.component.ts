@@ -6,7 +6,8 @@ import { AuthService } from '@auth/services/auth.service';
 import { RegisterRequest } from '@auth/interfaces/register.request';
 import { passwordMatchValidator } from '@core/validators/confirm.password';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -28,14 +29,22 @@ export class RegisterComponent {
   { validators: passwordMatchValidator }
   );
 
-  public login() {
+  public register() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
     
     this.authSrv.register(this.form.value as RegisterRequest).pipe(
-      tap(() => this.router.navigate(['/']))
+      tap(() => this.router.navigate(['/auth/login'])),
+      catchError((err:HttpErrorResponse) => {
+        this.error = err.status === 429
+          ? 'You only can register 1 user in some range of time, try again later (Rate limit detected)'
+          : err.error?.message || 'Error, try again later';
+
+
+        return throwError(() => err);
+      })
     ).subscribe();
   }
 }

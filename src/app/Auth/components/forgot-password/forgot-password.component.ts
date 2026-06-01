@@ -37,7 +37,9 @@ export class ForgotPasswordComponent {
         this.loading = false;
       },
       error: (err:HttpErrorResponse) => {
-        this.error = (err.error as ApiError).detail;
+        this.error = err.status === 429
+          ? 'You only can request password reset 1 time in some range of time, try again later (Rate limit detected)'
+          : (err.error as ApiError).detail || 'Error, try again later';
         this.loading = false;
       },
     });
