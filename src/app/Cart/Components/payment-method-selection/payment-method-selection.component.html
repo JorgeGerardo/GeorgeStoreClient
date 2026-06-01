@@ -1,9 +1,15 @@
 <main>
-    <h6 class="fw-bold mb-2 d-flex justify-content-between align-items-center"
-        (click)="isMenuOpen = !isMenuOpen"
-        style="cursor: pointer;">
-        Payment Method
+    <h6 class="fw-bold mb-2">
+    <button
+        type="button"
+        class="d-flex justify-content-between align-items-center w-100 border-0 bg-transparent p-0 fw-bold"
+        (click)="isMenuOpen = !isMenuOpen">
+
+        <span>Payment Method</span>
+
         <i class="bi bi-chevron-down"></i>
+
+    </button>
     </h6>
 
     @if (selectedValue) {
@@ -18,22 +24,27 @@
     <header class="collapse" [class.show]="isMenuOpen">
         <section class="row mb-3">
             @for (pm of paymentMethods(); track pm.id) {
-              <div class="col-12 mb-2">
-                  <main
-                  class="selectable-item"
-                  [class.selected]="this.selectedValue === pm.id"
-                  (click)="selectPaymentMethod(pm.id)"
-                  >
-                      <div class="fw-semibold">{{ pm.cardHolderName }}</div>
-                      <div class="small text-muted">
-                          **** {{ pm.lastDigits }} • Exp {{ pm.expYear }}
-                      </div>
-                  </main>
-              </div>
+                <main class="col-12 mb-2">
+                    <button
+                        type="button"
+                        class="selectable-item w-100 text-start"
+                        [class.selected]="selectedValue === pm.id"
+                        (click)="selectPaymentMethod(pm.id)">
+
+                        <div class="fw-semibold">
+                        {{ pm.cardHolderName }}
+                        </div>
+
+                        <div class="small text-muted">
+                        **** {{ pm.lastDigits }} • Exp {{ pm.expYear }}
+                        </div>
+
+                    </button>
+                </main>
             }
         </section>
 
-        @if (paymentMethods().length == 0) {
+        @if (paymentMethods().length === 0) {
             <section class="text-center my-3">
                 <p class="text-muted small mb-2">
                     You don’t have any saved payment method

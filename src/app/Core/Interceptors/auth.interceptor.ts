@@ -16,7 +16,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   const token = tokenService.get();
 
-  let authReq = token
+  const authReq = token
     ? req.clone({ setHeaders: { Authorization: `Bearer ${token}`} })
     : req;
   
@@ -32,7 +32,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
 
 function handle401Error(
-  req: HttpRequest<any>,
+  req: HttpRequest<unknown>,
   next: HttpHandlerFn,
   authService: AuthService,
   tokenService: TokenService,

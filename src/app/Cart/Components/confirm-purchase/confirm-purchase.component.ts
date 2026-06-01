@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import Cart from '@cart/interfaces/cart';
 import { CartService } from '@cart/services/cart.service';
 import { NavbarComponent } from "@core/components/navbar/navbar.component";
@@ -18,7 +18,7 @@ import { OrderService } from '@order/service/order.service';
   templateUrl: './confirm-purchase.component.html',
   styleUrl: './confirm-purchase.component.scss'
 })
-export class ConfirmPurchaseComponent {
+export class ConfirmPurchaseComponent implements OnInit {
   private router = inject(Router);
   private cartService = inject(CartService);
   private paymentMethodService = inject(PaymentMethodService);
