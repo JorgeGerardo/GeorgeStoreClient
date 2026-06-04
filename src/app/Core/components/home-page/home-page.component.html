@@ -25,6 +25,8 @@
     </div>
   </section>
 
+  <app-category-carousel class="mb-4"/>
+
   <body class="row g-3">
     @for (product of paginationInf.items; track product.id) {
       <app-product-card [product]="product" class="col-12 col-sm-6 col-lg-4"/>
