@@ -4,13 +4,14 @@ import { Product } from '@product/interfaces/product';
 import { ProductService } from '@product/services/product.service';
 import { ProductCardComponent } from '@product/components/product-card/product-card.component';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-import { QueryParams } from '@core/Interfaces/queryparams';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ProductQueryParams } from '@product/interfaces/product-query-params';
+import { CategoryCarouselComponent } from "../category-carousel/category-carousel.component";
 
 @Component({
   selector: 'app-home-page',
-  imports: [NavbarComponent, ProductCardComponent, NgbPagination, ReactiveFormsModule],
+  imports: [NavbarComponent, ProductCardComponent, NgbPagination, ReactiveFormsModule, CategoryCarouselComponent],
   templateUrl: './home-page.component.html',
   styleUrl: 'home-page.component.css'
 })
@@ -27,13 +28,19 @@ export class HomePageComponent implements OnInit {
     query: {
       pageSize: 6,
       offset: 0,
-    } as QueryParams,
+    } as ProductQueryParams,
   };
+
 
   ngOnInit() {
     this.activeRoute.queryParams.subscribe(params => {
       this.paginationInf.page = +params['page'] || 1;
       this.paginationInf.query.term = params['term'] || '';
+      if (params['categoryId'])
+        this.paginationInf.query.categoryId = +params['categoryId'];
+      else
+        delete this.paginationInf.query.categoryId;
+
       this.search.setValue(this.paginationInf.query.term!, { emitEvent: false });
 
       this.paginationInf.query.offset =
@@ -71,7 +78,8 @@ export class HomePageComponent implements OnInit {
     this.router.navigate([], {
       queryParams: {
         page: 1,
-        term: term.trim() !== '' ? term.trim() : null
+        term: term.trim() !== '' ? term.trim() : null,
+        categoryId: undefined
       },
       queryParamsHandling: 'merge'
     });

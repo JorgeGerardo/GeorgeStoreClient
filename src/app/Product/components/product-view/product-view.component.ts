@@ -5,11 +5,13 @@ import { ProductService } from '@product/services/product.service';
 import { Location } from '@angular/common';
 import { CartService } from '@cart/services/cart.service';
 import { CartAddDto } from '@cart/interfaces/cart.add.dto';
+import { CategoryCarouselComponent } from "@core/components/category-carousel/category-carousel.component";
 
 @Component({
   selector: 'app-product-view',
-  imports: [RouterLink],
+  imports: [RouterLink, CategoryCarouselComponent],
   templateUrl: './product-view.component.html',
+  styleUrl: './product-view.component.scss',
 })
 export class ProductViewComponent implements OnInit {
   private route = inject(ActivatedRoute);
