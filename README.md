@@ -117,6 +117,9 @@ También cuenta con recuperación de contraseñas mediante correo electrónico.
 
 ![Perfil de usuario](screenshots/Profile.png)
 
+### Panel administrativo
+![Perfil de usuario](screenshots/AdminPanel.png)
+
 ---
 
 
