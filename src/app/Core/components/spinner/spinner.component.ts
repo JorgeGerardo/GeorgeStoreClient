@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { SpinnerService } from '@core/services/spinner.service';
-import { CommonModule } from '@angular/common';
+
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-spinner',
-  imports: [CommonModule],
+  imports: [],
   template: `
     @if (spinnerState()) {
       <div class="spinner-overlay">

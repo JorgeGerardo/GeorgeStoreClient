@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +12,7 @@ import { EmailValidator } from '@core/validators/email-validator';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, ReactiveFormsModule, NgbAlertModule],
+  imports: [ReactiveFormsModule, NgbAlertModule],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
