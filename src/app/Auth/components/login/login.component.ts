@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
@@ -10,7 +10,7 @@ import { EmailValidator } from '@core/validators/email-validator';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule, NgbAlertModule, RouterLink],
+  imports: [ReactiveFormsModule, NgbAlertModule, RouterLink],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {

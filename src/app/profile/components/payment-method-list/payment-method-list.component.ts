@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject, OnInit } from '@angular/core';
 import { PaymentMethod } from '@profile/interfaces/payment-method';
 import { PaymentMethodService } from '@profile/services/payment-method.service';
@@ -7,7 +7,7 @@ import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-payment-method-list',
-  imports: [CommonModule, PaymentMethodCardComponent, RouterLink],
+  imports: [PaymentMethodCardComponent, RouterLink],
   templateUrl: './payment-method-list.component.html',
   styles: ``,
 })
