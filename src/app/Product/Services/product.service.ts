@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QueryParams } from '@core/interfaces/queryparams';
 import { Product } from '@product/interfaces/product';
-import { NoAuth } from '@core/Interceptors/http.context';
+import { NoAuth } from '@core/interceptors/http.context';
 import { BaseService } from '@core/services/base.service';
 import { PagedResult } from '@core/interfaces/paged-result';
 

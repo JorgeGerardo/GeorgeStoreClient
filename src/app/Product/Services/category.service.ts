@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NoAuth } from '@core/Interceptors/http.context';
+import { NoAuth } from '@core/interceptors/http.context';
 import { BaseService } from '@core/services/base.service';
 import { Category } from '@product/interfaces/category';
 

@@ -1,6 +1,6 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
 import { Cart } from '@cart/interfaces/cart';
-import { NoSpinner } from '@core/Interceptors/http.context';
+import { NoSpinner } from '@core/interceptors/http.context';
 import { CartAddDto } from '@cart/interfaces/cart.add.dto';
 import { BaseService } from '@core/services/base.service';
 import { catchError, of, switchMap, tap } from 'rxjs';

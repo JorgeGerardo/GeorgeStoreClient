@@ -5,7 +5,7 @@ import { catchError, finalize, map, of, tap, throwError } from 'rxjs';
 import { LoginResponse } from '@auth/interfaces/login.response';
 import { TokenService } from '@auth/services/token.service';
 import { BaseService } from '@core/services/base.service';
-import { NoAuth } from '@core/Interceptors/http.context';
+import { NoAuth } from '@core/interceptors/http.context';
 import { ResetPassowordRequest } from '@auth/interfaces/reset-password-request';
 import { ModalService } from '@core/services/modal.service';
 import { HttpErrorResponse } from '@angular/common/http';

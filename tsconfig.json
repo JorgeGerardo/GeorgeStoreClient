@@ -5,7 +5,6 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist/out-tsc",
-    "baseUrl": ".",
     "paths": {
       "@auth/*": ["./src/app/auth/*"],
       "@cart/*": ["./src/app/cart/*"],
