@@ -9,7 +9,7 @@ import { NoAuth } from '@core/Interceptors/http.context';
 import { ResetPassowordRequest } from '@auth/interfaces/reset-password-request';
 import { ModalService } from '@core/services/modal.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiError } from '@core/Interfaces/api-error';
+import { ApiError } from '@core/interfaces/api-error';
 import { Router } from '@angular/router';
 
 @Injectable({

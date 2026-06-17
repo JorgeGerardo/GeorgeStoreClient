@@ -3,7 +3,7 @@ import { Address, AddressCreateDto } from '@profile/interfaces/address';
 import { catchError, of, switchMap } from 'rxjs';
 import { BaseService } from '@core/services/base.service';
 import { ModalService } from '@core/services/modal.service';
-import { ApiError } from '@core/Interfaces/api-error';
+import { ApiError } from '@core/interfaces/api-error';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({

@@ -7,7 +7,7 @@ import { catchError, of, switchMap, tap } from 'rxjs';
 import { TokenService } from '@auth/services/token.service';
 import { ModalService } from '@core/services/modal.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiError } from '@core/Interfaces/api-error';
+import { ApiError } from '@core/interfaces/api-error';
 
 @Injectable({
   providedIn: 'root',

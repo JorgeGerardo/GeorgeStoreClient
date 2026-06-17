@@ -4,7 +4,7 @@ import { OrderService } from '@order/service/order.service';
 import { OrderComponent } from '@order/components/order/order.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-import { QueryParams } from '@core/Interfaces/queryparams';
+import { QueryParams } from '@core/interfaces/queryparams';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({

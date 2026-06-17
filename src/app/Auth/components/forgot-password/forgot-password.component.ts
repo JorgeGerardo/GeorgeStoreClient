@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
-import { ApiError } from '@core/Interfaces/api-error';
+import { ApiError } from '@core/interfaces/api-error';
 import { EmailValidator } from '@core/validators/email-validator';
 import { NgbAlert } from "@ng-bootstrap/ng-bootstrap";
 
