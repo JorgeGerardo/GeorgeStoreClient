@@ -5,13 +5,14 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist/out-tsc",
+    "baseUrl": ".",
     "paths": {
       "@auth/*": ["./src/app/auth/*"],
       "@cart/*": ["./src/app/cart/*"],
       "@core/*": ["./src/app/core/*"],
       "@product/*": ["./src/app/product/*"],
       "@profile/*": ["./src/app/profile/*"],
-      "@order/*": ["./src/app/order/*"],
+      "@order/*": ["./src/app/order/*"]
     },
     "strict": true,
     "noImplicitOverride": true,
