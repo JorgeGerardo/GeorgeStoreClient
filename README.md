@@ -123,7 +123,7 @@ También cuenta con recuperación de contraseñas mediante correo electrónico.
 ---
 
 
-## Backend
+## Backend 
 
 Este frontend consume una API REST desarrollada con ASP.NET Core:
 https://github.com/JorgeGerardo/GeorgeStoreAPI
