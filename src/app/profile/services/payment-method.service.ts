@@ -5,7 +5,7 @@ import { catchError, of, switchMap } from 'rxjs';
 import { BaseService } from '@core/services/base.service';
 import { ModalService } from '@core/services/modal.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiError } from '@core/Interfaces/api-error';
+import { ApiError } from '@core/interfaces/api-error';
 
 @Injectable({
   providedIn: 'root'

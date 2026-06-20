@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ModalInformationComponent } from '@core/components/modal-information/modal-information.component';
-import { ApiError } from '@core/Interfaces/api-error';
+import { ApiError } from '@core/interfaces/api-error';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
