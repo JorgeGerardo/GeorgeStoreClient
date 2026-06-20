@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: 'https://georgestore-gwemdwb0gnhhb0ha.canadacentral-01.azurewebsites.net/api',
+    apiUrl: 'https://as-georgestore-prd-gtd4bzg7bccdche2.mexicocentral-01.azurewebsites.net/api',
 };
